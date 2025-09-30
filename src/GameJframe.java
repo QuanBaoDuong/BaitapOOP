@@ -3,17 +3,16 @@ import javax.swing.*;
 public class GameJframe extends JFrame {
 
     public static final int SCREEN_WIDTH = 1000;
-    public static final int SCREEN_HEIGHT = 600;
+    public static final int SCREEN_HEIGHT = 800;
 
-    private GameJpanel gameJpanel = new GameJpanel();
+    private GameJpanel gamePanel = new GameJpanel();
 
     public GameJframe() {
-        this.add(gameJpanel);
-        this.pack();
         this.setTitle("ARKANOID");
-        this.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
-        this.setLocationRelativeTo(null);
         this.setResizable(false);
+        setContentPane(gamePanel);
+        this.pack();
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
 
