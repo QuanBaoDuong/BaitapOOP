@@ -18,7 +18,8 @@ public class Ball extends MovableObject{
     public void move() {
             x+=Speed*directionX;
             y+=Speed*directionY;
-            if(x+1.5*width>=GameJframe.SCREEN_WIDTH){
+
+            if(x+width>=GameJframe.SCREEN_WIDTH){
                 directionX*=-1;
             }
             if(x<=0) {
@@ -27,9 +28,10 @@ public class Ball extends MovableObject{
             if(y<=0) {
                 directionY*=-1;
             }
-            if(y+2*width>=GameJframe.SCREEN_HEIGHT) {
+            if(y+height>=GameJframe.SCREEN_HEIGHT) {
                 directionY*=-1;
             }
+
     }
 
     public void render(Graphics g) {
@@ -39,4 +41,22 @@ public class Ball extends MovableObject{
     public void update() {
             move();
     }
+    public void bounceOff(GameObject other) {
+            Rectangle ballRect = this.getBounds();
+            Rectangle otherRect = other.getBounds();
+
+            if(!ballRect.intersects(otherRect)) return ;
+
+            Rectangle intersection = ballRect.intersection(otherRect);
+            if (intersection.width<intersection.height) {
+                directionX*=-1;
+            } else if (intersection.width>intersection.height) {
+                directionY*=-1;
+            }
+            else {
+                directionX*=-1;
+                directionY*=-1;
+            }
+    }
+
 }
