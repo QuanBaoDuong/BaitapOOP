@@ -1,62 +1,52 @@
-import javax.swing.*;
 import java.awt.*;
+import javax.swing.*;
 
-public class Ball extends MovableObject{
-        private int directionX;
-        private int directionY;
-        private int Speed;
-        private Image Ball_image;
-        public Ball (int x,int y,int width,int height,int directionX,int directionY,int Speed) {
-            super(x,y,width,height,0,0);
-            this.directionX=directionX;
-            this.directionY=directionY;
-            this.Speed = Speed;
-            Image original = new ImageIcon(Ball.class.getResource("/image/ball.png")).getImage();
+public class Ball extends MovableObject {
+    private int directionX;
+    private int directionY;
+    private int Speed;
+    private Image Ball_image;
+
+    public Ball(int x, int y, int width, int height, int directionX, int directionY, int Speed) {
+        super(x, y, width, height, 0, 0);
+        this.directionX = directionX;
+        this.directionY = directionY;
+        this.Speed = Speed;
+
+        try {
+            Image original = new ImageIcon(getClass().getResource("/image/ball.png")).getImage();
             Ball_image = original.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        } catch (Exception e) {
+            Ball_image = null;
         }
+    }
 
+    @Override
     public void move() {
-            x+=Speed*directionX;
-            y+=Speed*directionY;
-
-            if(x+width>=GameJframe.SCREEN_WIDTH){
-                directionX*=-1;
-            }
-            if(x<=0) {
-                directionX*=-1;
-            }
-            if(y<=0) {
-                directionY*=-1;
-            }
-            if(y+height>=GameJframe.SCREEN_HEIGHT) {
-                directionY*=-1;
-            }
-
+        x += Speed * directionX;
+        y += Speed * directionY;
     }
 
+    @Override
     public void render(Graphics g) {
-        g.drawImage(Ball_image,x,y,width,height,null);
+        if (Ball_image != null) {
+            g.drawImage(Ball_image, x, y, width, height, null);
+        } else {
+            g.setColor(Color.RED);
+            g.fillOval(x, y, width, height);
+        }
     }
 
+    @Override
     public void update() {
-            move();
-    }
-    public void bounceOff(GameObject other) {
-            Rectangle ballRect = this.getBounds();
-            Rectangle otherRect = other.getBounds();
-
-            if(!ballRect.intersects(otherRect)) return ;
-
-            Rectangle intersection = ballRect.intersection(otherRect);
-            if (intersection.width<intersection.height) {
-                directionX*=-1;
-            } else if (intersection.width>intersection.height) {
-                directionY*=-1;
-            }
-            else {
-                directionX*=-1;
-                directionY*=-1;
-            }
+        move();
     }
 
+    public void reverseX() { directionX *= -1; }
+    public void reverseY() { directionY *= -1; }
+    public void setY(int y) { this.y = y; }
+    public int getX() { return x; }
+    public int getY() { return y; }
+    public int getWidth() { return width; }
+    public int getHeight() { return height; }
 }
