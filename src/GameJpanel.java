@@ -4,8 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GameJpanel extends JPanel implements ActionListener {
-
-    private Ball ball=new Ball(400,400,30,30,1,1,5);
+    private Ball ball=new Ball(400,400,30,30,0.5,0.5,10);
     private Timer timer;
 
     public Dimension getPreferredSize() {
@@ -16,6 +15,7 @@ public class GameJpanel extends JPanel implements ActionListener {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         ball.render(g);
+        brick.render(g);
     }
     public GameJpanel () {
         this.setBackground(Color.BLACK);
@@ -25,6 +25,9 @@ public class GameJpanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         ball.update();   // cập nhật vị trí bóng
+        /*if (ball.checkCollision(brick)) {
+            ball.bounceOff(brick);
+        }*/
         repaint();       // vẽ lại panel
     }
 

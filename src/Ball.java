@@ -2,12 +2,12 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Ball extends MovableObject {
-    private int directionX;
-    private int directionY;
+    private double directionX;
+    private double directionY;
     private int speed;
     private Image Ball_image;
 
-    public Ball(int x, int y, int width, int height, int directionX, int directionY, int speed) {
+    public Ball(int x, int y, int width, int height, double directionX, double directionY, int speed) {
         super(x, y, width, height, 0, 0);
         this.directionX = directionX;
         this.directionY = directionY;
@@ -65,48 +65,48 @@ public class Ball extends MovableObject {
 
             Rectangle intersection = ballRect.intersection(otherRect);
 
-            if (other instanceof Brick) {
-                float paddleTop = other.y;
-                float ballBottom = this.y+this.height;
-                int someThreshold = Math.max(5, speed);
+        if (other instanceof Paddle) {
 
-                if (ballBottom>=paddleTop ) {
-                    float ballCenterX = this.x+this.width/2f;
-                    float paddleCenterX = other.x+other.width/2f;
-                    float relativeIntersectX = (ballCenterX-paddleCenterX)/(other.width/2f);
-                    if (relativeIntersectX<=-1) relativeIntersectX=-1;
-                    else if (relativeIntersectX>=1) relativeIntersectX=1;
+            // Giả sử paddle nằm ngang, ưu tiên phản xạ theo mặt va chạm
+            if (intersection.height < intersection.width) {
+                // Va mặt trên của paddle → dùng góc phản xạ
+                double ballCenterX = this.x + this.width / 2.0;
+                double paddleCenterX = other.x + other.width / 2.0;
+                double relativeIntersect = (ballCenterX - paddleCenterX) / (other.width / 2.0);
+                relativeIntersect = Math.max(-1.0, Math.min(1.0, relativeIntersect)); // Clamp
 
-                    double maxBounceAngle = Math.toRadians(60);
-                    double bounceAngle = relativeIntersectX * maxBounceAngle;
+                double maxBounceAngle = Math.toRadians(60);
+                double bounceAngle = relativeIntersect * maxBounceAngle;
 
-                    x += (int)(speed *Math.sin(bounceAngle));
-                    y += -(int)(speed *Math.cos(bounceAngle));
+                directionX = Math.sin(bounceAngle);
+                directionY = -Math.cos(bounceAngle); // luôn đi lên
+
+                // Chuẩn hóa
+                double len = Math.sqrt(directionX * directionX + directionY * directionY);
+                directionX /= len;
+                directionY /= len;
+                if (Math.abs(directionX) < 0.1) {
+                    directionX = (directionX >= 0 ? 0.1 : -0.1);
                 }
-                else {
-                    if (intersection.width<intersection.height) {
-                        directionX*=-1;
-                    }
-                    else if (intersection.width>intersection.height){
-                        directionY*=-1;
-                    }
-                    else {
-                        directionX*=-1;
-                        directionY*=-1;
-                    }
-                }
-
-            }
-            if (intersection.width<intersection.height) {
-                directionX*=-1;
-            } else if (intersection.width>intersection.height) {
-                directionY*=-1;
+            } else if (intersection.width<intersection.height){
+                // Va cạnh bên trái hoặc phải của paddle → phản xạ ngang
+                directionX *= -1;
             }
             else {
-                directionX*=-1;
-                directionY*=-1;
+                directionX *=-1;
+                directionY *=-1;
             }
-
+        }
+        else {
+            if (intersection.width < intersection.height) {
+                directionX *= -1;
+            } else if (intersection.width > intersection.height) {
+                directionY *= -1;
+            } else {
+                directionX *= -1;
+                directionY *= -1;
+            }
+        }
     }
     public boolean checkCollision(GameObject other) {
             Rectangle ballBounds = this.getBounds();
