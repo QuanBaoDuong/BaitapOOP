@@ -1,20 +1,27 @@
-import javax.swing.*;
 import java.awt.*;
+import javax.swing.*;
 
-public class Ball extends MovableObject{
-        private double directionX;
-        private double directionY;
-        private int speed;
-        private Image Ball_image;
-        public Ball (int x,int y,int width,int height,int directionX,int directionY,int speed) {
-            super(x,y,width,height,0,0);
-            this.directionX=directionX;
-            this.directionY=directionY;
-            this.speed = speed;
-            Image original = new ImageIcon(Ball.class.getResource("/image/ball.png")).getImage();
+public class Ball extends MovableObject {
+    private int directionX;
+    private int directionY;
+    private int speed;
+    private Image Ball_image;
+
+    public Ball(int x, int y, int width, int height, int directionX, int directionY, int speed) {
+        super(x, y, width, height, 0, 0);
+        this.directionX = directionX;
+        this.directionY = directionY;
+        this.speed = speed;
+
+        try {
+            Image original = new ImageIcon(getClass().getResource("/image/ball.png")).getImage();
             Ball_image = original.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        } catch (Exception e) {
+            Ball_image = null;
         }
+    }
 
+    @Override
     public void move() {
             x+=speed*directionX;
         System.out.print(x+" ");
@@ -36,10 +43,17 @@ public class Ball extends MovableObject{
 
     }
 
+    @Override
     public void render(Graphics g) {
-        g.drawImage(Ball_image,x,y,width,height,null);
+        if (Ball_image != null) {
+            g.drawImage(Ball_image, x, y, width, height, null);
+        } else {
+            g.setColor(Color.RED);
+            g.fillOval(x, y, width, height);
+        }
     }
 
+    @Override
     public void update() {
             move();
     }
@@ -92,6 +106,7 @@ public class Ball extends MovableObject{
                 directionX*=-1;
                 directionY*=-1;
             }
+
     }
     public boolean checkCollision(GameObject other) {
             Rectangle ballBounds = this.getBounds();
@@ -102,4 +117,5 @@ public class Ball extends MovableObject{
     public void setSpeed(int speed) {
         this.speed=speed;
     }
+
 }
