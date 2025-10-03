@@ -24,10 +24,10 @@ public class Ball extends MovableObject {
     @Override
     public void move() {
             x+=speed*directionX;
-        System.out.print(x+" ");
+        //System.out.print(x+" ");
             y+=speed*directionY;
-        System.out.print(y);
-        System.out.println();
+        //System.out.print(y);
+        //System.out.println();
             if(x+width>=GameJframe.SCREEN_WIDTH){
                 directionX*=-1;
             }
@@ -65,7 +65,7 @@ public class Ball extends MovableObject {
 
             Rectangle intersection = ballRect.intersection(otherRect);
 
-        if (other instanceof Paddle) {
+        /*if (other instanceof Paddle) {
 
             // Giả sử paddle nằm ngang, ưu tiên phản xạ theo mặt va chạm
             if (intersection.height < intersection.width) {
@@ -97,16 +97,14 @@ public class Ball extends MovableObject {
                 directionY *=-1;
             }
         }
-        else {
+        else {*/
             if (intersection.width < intersection.height) {
                 directionX *= -1;
-            } else if (intersection.width > intersection.height) {
-                directionY *= -1;
-            } else {
-                directionX *= -1;
+            } else if (intersection.width >= intersection.height) {
                 directionY *= -1;
             }
-        }
+
+       //}
     }
     public boolean checkCollision(GameObject other) {
             Rectangle ballBounds = this.getBounds();
@@ -116,6 +114,13 @@ public class Ball extends MovableObject {
 
     public void setSpeed(int speed) {
         this.speed=speed;
+    }
+    public void vachamX() {
+        directionX*=-1;
+
+    }
+    public void vachamY() {
+        directionY*=-1;
     }
 
 }
