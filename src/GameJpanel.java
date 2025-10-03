@@ -2,6 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 
 
 public class GameJpanel extends JPanel implements ActionListener {
@@ -12,7 +16,7 @@ public class GameJpanel extends JPanel implements ActionListener {
     private Timer timer;
 
     public Dimension getPreferredSize() {
-        return new Dimension(GameJframe.SCREEN_WIDTH,GameJframe.SCREEN_HEIGHT);
+        return new Dimension(GameJframe.SCREEN_WIDTH, GameJframe.SCREEN_HEIGHT);
     }
 
     @Override
@@ -27,13 +31,14 @@ public class GameJpanel extends JPanel implements ActionListener {
             }
         }
 
-
     }
-    public GameJpanel () {
+
+    public GameJpanel() {
         this.setBackground(Color.BLACK);
         timer = new Timer(16, this); // ~60 FPS
         timer.start();
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         ball.update();// cập nhật vị trí bóng
@@ -49,6 +54,6 @@ public class GameJpanel extends JPanel implements ActionListener {
         }
 
         repaint();       // vẽ lại panel
-    }
 
+    }
 }
