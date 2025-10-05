@@ -1,3 +1,4 @@
+/*
 import java.awt.*;
 
 public class BallInteraction {
@@ -34,3 +35,4 @@ public class BallInteraction {
         return ball.getY() > GameJframe.SCREEN_HEIGHT;
     }
 }
+*/
