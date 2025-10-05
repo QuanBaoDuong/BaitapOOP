@@ -2,16 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 
 
 public class GameJpanel extends JPanel implements ActionListener {
 
     private Ball ball=new Ball(400,400,40,40,1,1,15);
-    Brick[][] bricks = Brick.createMap(5, 10, 100, 60);
+    Brick[][] bricks = Map1.createMap(5, 10, 100, 60);
     Brick brick;
     private Timer timer;
 
