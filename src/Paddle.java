@@ -2,14 +2,26 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Paddle extends MovableObject {
-    private int speed = 8;
-    private Image paddleImage;
+    private int speed = 16;
     private boolean moveLeft, moveRight;
+    private Image paddleImage;
 
     public Paddle(int x, int y) {
-        super(x, y, 100, 20, 0, 0);
-        Image original = new ImageIcon(getClass().getResource("/image/paddle.png")).getImage();
-        paddleImage = original.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        super(x, y, 175, 35, 0, 0);
+
+        // Thử tải ảnh paddle, nếu không có thì sẽ tô màu xanh dương
+        try {
+            Image original = new ImageIcon(getClass().getResource("/image/paddle.png")).getImage();
+            paddleImage = original.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        } catch (Exception e) {
+            paddleImage = null;
+            System.out.println(" Không tìm thấy ảnh paddle, dùng màu xanh dương thay thế.");
+        }
+    }
+
+    @Override
+    public void update() {
+        move();
     }
 
     @Override
@@ -20,35 +32,28 @@ public class Paddle extends MovableObject {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(paddleImage, x, y, width, height, null);
-    }
-
-    @Override
-    public void update() {
-        move();
-    }
-
-    public int getY() { return y; }
-
-    public void setMoveLeft(boolean moveLeft) { this.moveLeft = moveLeft; }
-
-    public void setMoveRight(boolean moveRight) { this.moveRight = moveRight; }
-
-    public void setWidth(int width) {
-        this.width = width;
-        updatePaddleImage();
-    }
-
-    public void setSpeed(int speed) { this.speed = speed; }
-
-    /*public void applyPowerUp(PowerUp powerUp) {
-        if (powerUp != null) {
-            powerUp.applyToPaddle(this);
+        if (paddleImage != null) {
+            g.drawImage(paddleImage, x, y, null);
+        } else {
+            g.setColor(Color.BLUE);
+            g.fillRoundRect(x, y, width, height, 10, 10);
         }
-    }*/
+    }
 
-    private void updatePaddleImage() {
-        Image original = new ImageIcon(getClass().getResource("/image/paddle.png")).getImage();
-        paddleImage = original.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+    //  Gọi trong GameJpanel keyPressed / keyReleased
+    public void setMoveLeft(boolean moveLeft) {
+        this.moveLeft = moveLeft;
+    }
+
+    public void setMoveRight(boolean moveRight) {
+        this.moveRight = moveRight;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public int getY() {
+        return y;
     }
 }

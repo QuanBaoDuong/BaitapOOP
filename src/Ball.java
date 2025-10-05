@@ -34,9 +34,9 @@ public class Ball extends MovableObject {
             if(y<=0) {
                 directionY*=-1;
             }
-            if(y+height>=GameJframe.SCREEN_HEIGHT) {
+            /*if(y+height>=GameJframe.SCREEN_HEIGHT) {
                 directionY*=-1;
-            }
+            }*/
 
     }
 
@@ -65,7 +65,7 @@ public class Ball extends MovableObject {
         if (other instanceof Paddle) {
 
             // Giả sử paddle nằm ngang, ưu tiên phản xạ theo mặt va chạm
-            if (intersection.height < intersection.width) {
+            if (y + height <= other.y + intersection.height) {
                 // Va mặt trên của paddle → dùng góc phản xạ
                 double ballCenterX = this.x + this.width / 2.0;
                 double paddleCenterX = other.x + other.width / 2.0;
@@ -85,14 +85,11 @@ public class Ball extends MovableObject {
                 if (Math.abs(directionX) < 0.1) {
                     directionX = (directionX >= 0 ? 0.1 : -0.1);
                 }
-            } else if (intersection.width<intersection.height){
+            } else {
                 // Va cạnh bên trái hoặc phải của paddle → phản xạ ngang
                 directionX *= -1;
             }
-            else {
-                directionX *=-1;
-                directionY *=-1;
-            }
+
         }
         else {
             if (intersection.width < intersection.height) {

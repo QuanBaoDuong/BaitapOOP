@@ -5,19 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8239e84a-a218-47f7-b4b2-71c2c0c829eb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Map1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/NormalBrick.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/image/NormalBrick_Orange.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/image/NormalBrick_Red.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/image/NormalBrick_Yellow.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Brick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Brick.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameJframe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameJframe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameJpanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameJpanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Paddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Paddle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/brick_red.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/ball.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/ball.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,12 +42,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.GameJframe.executor": "Debug",
+    "Application.Ball.executor": "Run",
+    "Application.GameJframe.executor": "Run",
     "Application.GameJpanel.executor": "Run",
+    "Application.Paddle.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Merging master",
+    "git-widget-placeholder": "master",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -63,6 +57,11 @@
   }
 }]]></component>
   <component name="RunManager" selected="Application.GameJframe">
+    <configuration name="Ball" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Ball" />
+      <module name="oop" />
+      <method v="2" />
+    </configuration>
     <configuration name="GameJframe" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GameJframe" />
       <module name="oop" />
@@ -72,6 +71,11 @@
     </configuration>
     <configuration name="GameJpanel" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="GameJpanel" />
+      <module name="oop" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Paddle" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Paddle" />
       <module name="oop" />
       <method v="2" />
     </configuration>
