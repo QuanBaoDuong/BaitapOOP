@@ -65,7 +65,7 @@ public class Ball extends MovableObject {
 
             Rectangle intersection = ballRect.intersection(otherRect);
 
-        /*if (other instanceof Paddle) {
+        if (other instanceof Paddle) {
 
             // Giả sử paddle nằm ngang, ưu tiên phản xạ theo mặt va chạm
             if (intersection.height < intersection.width) {
@@ -97,14 +97,14 @@ public class Ball extends MovableObject {
                 directionY *=-1;
             }
         }
-        else {*/
+        else {
             if (intersection.width < intersection.height) {
                 directionX *= -1;
             } else if (intersection.width >= intersection.height) {
                 directionY *= -1;
             }
 
-       //}
+       }
     }
     public boolean checkCollision(GameObject other) {
             Rectangle ballBounds = this.getBounds();

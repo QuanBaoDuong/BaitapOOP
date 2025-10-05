@@ -1,4 +1,4 @@
-/*
+
 import java.awt.*;
 import javax.swing.*;
 
@@ -6,8 +6,8 @@ public class Paddle extends MovableObject {
     private boolean moveLeft, moveRight;
     private Image paddleImage;
 
-    public Paddle(int x, int y) {
-        super(x, y, 100, 20, 0, 0);
+    public Paddle(int x, int y,int speed) {
+        super(x, y, 200, 40, 0, 0);
 
         try {
             Image original = new ImageIcon(getClass().getResource("/image/paddle.png")).getImage();
@@ -43,12 +43,12 @@ public class Paddle extends MovableObject {
         return y;
     }
 
-    public void setMoveLeft(boolean moveLeft) {
-        this.moveLeft = moveLeft;
+    public void setMoveLeft() {
+        x-=20;
     }
 
-    public void setMoveRight(boolean moveRight) {
-        this.moveRight = moveRight;
+    public void setMoveRight() {
+        x+=20;
     }
 }
-*/
+
