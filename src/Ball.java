@@ -24,10 +24,7 @@ public class Ball extends MovableObject {
     @Override
     public void move() {
             x+=speed*directionX;
-        //System.out.print(x+" ");
             y+=speed*directionY;
-        //System.out.print(y);
-        //System.out.println();
             if(x+width>=GameJframe.SCREEN_WIDTH){
                 directionX*=-1;
             }
