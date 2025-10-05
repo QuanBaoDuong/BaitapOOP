@@ -7,7 +7,7 @@ import java.awt.event.KeyListener;
 
 
 public class GameJpanel extends JPanel implements ActionListener, KeyListener {
-
+    private Image backGroundGame = new ImageIcon(getClass().getResource("/image/BackGroundgame.png")).getImage();
     private Ball ball=new Ball(400,400,40,40,1,1,8);
     private Paddle paddle = new Paddle(400,700);
     Brick[][] bricks = Map1.createMap(5, 10, 100, 60);
@@ -21,6 +21,7 @@ public class GameJpanel extends JPanel implements ActionListener, KeyListener {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        g.drawImage(backGroundGame,0,0,null);
         ball.render(g);
         paddle.render(g);
         for (int row = 0; row < bricks.length; row++) {
@@ -34,7 +35,7 @@ public class GameJpanel extends JPanel implements ActionListener, KeyListener {
     }
 
     public GameJpanel() {
-        this.setBackground(Color.BLACK);
+
         setFocusable(true);
         addKeyListener(this);
         timer = new Timer(16, this); // ~60 FPS
