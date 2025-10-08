@@ -4,7 +4,7 @@ import javax.swing.*;
 public class Ball extends MovableObject {
     private double directionX;
     private double directionY;
-    private int speed;
+    public int speed;
     private Image Ball_image;
 
     public Ball(int x, int y, int width, int height, double directionX, double directionY, int speed) {

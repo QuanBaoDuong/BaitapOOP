@@ -2,7 +2,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Paddle extends MovableObject {
-    private int speed = 16;
+    public int speed = 16;
     private boolean moveLeft, moveRight;
     private Image paddleImage;
 
@@ -33,7 +33,7 @@ public class Paddle extends MovableObject {
     @Override
     public void render(Graphics g) {
         if (paddleImage != null) {
-            g.drawImage(paddleImage, x, y, null);
+            g.drawImage(paddleImage, x, y, width, height, null);
         } else {
             g.setColor(Color.BLUE);
             g.fillRoundRect(x, y, width, height, 10, 10);
