@@ -35,9 +35,9 @@ public class Ball extends MovableObject {
         if(y<=0) {
             directionY*=-1;
         }
-            if(y+height>=GameJframe.SCREEN_HEIGHT) {
+           /* if(y+height>=GameJframe.SCREEN_HEIGHT) {
                 directionY*=-1;
-            }
+            }*/
 
     }
 

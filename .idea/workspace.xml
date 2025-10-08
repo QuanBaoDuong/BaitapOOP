@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8239e84a-a218-47f7-b4b2-71c2c0c829eb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameJpanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameJpanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PowerUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PowerUp.java" afterDir="false" />
-    </list>
+    <list default="true" id="8239e84a-a218-47f7-b4b2-71c2c0c829eb" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,7 +43,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Merging master",
+    "git-widget-placeholder": "master",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
