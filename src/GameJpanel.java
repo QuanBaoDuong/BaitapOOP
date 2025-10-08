@@ -10,7 +10,7 @@ public class GameJpanel extends JPanel implements ActionListener, KeyListener {
     Brick[][] bricks = Map1.createMap(5, 10, 100, 60);
     Random rand = new Random();
     private javax.swing.Timer timer;
-    //private java.util.List<PowerUp> powerUps = new ArrayList<>();
+    private java.util.List<PowerUp> powerUps = new ArrayList<>();
 
     public GameJpanel() {
         setFocusable(true);
@@ -38,9 +38,9 @@ public class GameJpanel extends JPanel implements ActionListener, KeyListener {
             }
         }
 
-        /*for (PowerUp p : powerUps) {
+        for (PowerUp p : powerUps) {
             p.render(g);
-        }*/
+        }
     }
 
     @Override
@@ -75,11 +75,11 @@ public class GameJpanel extends JPanel implements ActionListener, KeyListener {
             ball.x += ball.getDirectionX() * 2;
             ball.y += ball.getDirectionY() * 2;
 
-            /*PowerUp newPower = PowerUp.generateFromBrick(nearestBrick);
-            if (newPower != null) powerUps.add(newPower);*/
+            PowerUp newPower = PowerUp.generateFromBrick(nearestBrick);
+            if (newPower != null) powerUps.add(newPower);
         }
 
-        /*Iterator<PowerUp> iterator = powerUps.iterator();
+        Iterator<PowerUp> iterator = powerUps.iterator();
         while (iterator.hasNext()) {
             PowerUp p = iterator.next();
             p.update();
@@ -92,7 +92,6 @@ public class GameJpanel extends JPanel implements ActionListener, KeyListener {
                 repaint();
             }
         }
-*/
         repaint();
     }
 

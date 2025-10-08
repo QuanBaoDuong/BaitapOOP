@@ -5,7 +5,7 @@ public class Ball extends MovableObject {
     private double directionX;
     private double directionY;
     private boolean hasBouncedThisFrame = false;
-    public int speed;
+    private int speed;
     private Image Ball_image;
 
     public Ball(int x, int y, int width, int height, double directionX, double directionY, int speed) {
@@ -136,6 +136,9 @@ public class Ball extends MovableObject {
     }
     public double getDirectionY() {
         return directionY;
+    }
+    public int getSpeed() {
+        return speed;
     }
 
 }
