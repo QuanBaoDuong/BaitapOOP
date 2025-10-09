@@ -11,6 +11,8 @@ public class GameJpanel extends JPanel implements ActionListener, KeyListener {
     Random rand = new Random();
     private javax.swing.Timer timer;
     private java.util.List<PowerUp> powerUps = new ArrayList<>();
+    private java.util.List<PowerUp> activePowerUps = new ArrayList<>();
+
 
     public GameJpanel() {
         setFocusable(true);
@@ -83,10 +85,19 @@ public class GameJpanel extends JPanel implements ActionListener, KeyListener {
 
             if (p.getBounds().intersects(paddle.getBounds())) {
                 p.activate(paddle, ball);
+                activePowerUps.add(p);
                 iterator.remove();
             } else if (p.y > GameJframe.SCREEN_HEIGHT) {
                 iterator.remove();
                 repaint();
+            }
+        }
+        Iterator<PowerUp> activeIterator = activePowerUps.iterator();
+        while (activeIterator.hasNext()) {
+            PowerUp p = activeIterator.next();
+            if (p.isExpired()) {
+                p.removeEffect(paddle, ball);
+                activeIterator.remove();
             }
         }
 
