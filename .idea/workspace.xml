@@ -5,9 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8239e84a-a218-47f7-b4b2-71c2c0c829eb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/GameState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameStateManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MenuState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PlayState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/image/Button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/image/GameOver.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/image/NewGame.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ball.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameJpanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameJpanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/BackGroundgame.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/BackGroundgame.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Paddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Paddle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PowerUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PowerUp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +26,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -24,6 +34,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "trungchienhk"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/QuanBaoDuong/BaitapOOP.git",
+    "accountId": "05f4a80a-3225-4d68-8951-97ec1c1ccae2"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -38,22 +60,22 @@
     <option name="sortByType" value="true" />
     <option name="sortKey" value="BY_TYPE" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Ball.executor": "Run",
-    "Application.GameJframe.executor": "Run",
-    "Application.GameJpanel.executor": "Run",
-    "Application.Paddle.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Ball.executor&quot;: &quot;Run&quot;,
+    &quot;Application.GameJframe.executor&quot;: &quot;Run&quot;,
+    &quot;Application.GameJpanel.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Paddle.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Merging master&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.GameJframe">
     <configuration name="Ball" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Ball" />
@@ -95,5 +117,16 @@
       <updated>1759396452556</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

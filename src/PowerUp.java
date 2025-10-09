@@ -175,12 +175,12 @@ class QuickBallPowerUp extends PowerUp {
 
     @Override
     public void applyEffect(Paddle paddle, Ball ball) {
-        ball.speed *= 2;
+        ball.setSpeed(ball.getSpeed()*2);
     }
 
     @Override
     public void removeEffect(Paddle paddle, Ball ball) {
-        ball.speed /= 2;
+        ball.setSpeed(ball.getSpeed() /2);
     }
 
     @Override

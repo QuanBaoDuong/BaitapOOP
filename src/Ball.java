@@ -4,7 +4,8 @@ import javax.swing.*;
 public class Ball extends MovableObject {
     private double directionX;
     private double directionY;
-    public int speed;
+    private boolean hasBouncedThisFrame = false;
+    private int speed;
     private Image Ball_image;
 
     public Ball(int x, int y, int width, int height, double directionX, double directionY, int speed) {
@@ -23,18 +24,18 @@ public class Ball extends MovableObject {
 
     @Override
     public void move() {
-            x+=speed*directionX;
-            y+=speed*directionY;
-            if(x+width>=GameJframe.SCREEN_WIDTH){
-                directionX*=-1;
-            }
-            if(x<=0) {
-                directionX*=-1;
-            }
-            if(y<=0) {
-                directionY*=-1;
-            }
-            /*if(y+height>=GameJframe.SCREEN_HEIGHT) {
+        x+=speed*directionX;
+        y+=speed*directionY;
+        if(x+width>=GameJframe.SCREEN_WIDTH){
+            directionX*=-1;
+        }
+        if(x<=0) {
+            directionX*=-1;
+        }
+        if(y<=0) {
+            directionY*=-1;
+        }
+           /* if(y+height>=GameJframe.SCREEN_HEIGHT) {
                 directionY*=-1;
             }*/
 
@@ -52,15 +53,22 @@ public class Ball extends MovableObject {
 
     @Override
     public void update() {
-            move();
+        move();
+        hasBouncedThisFrame = false;
+    }
+    public boolean hasBounced() {
+        return hasBouncedThisFrame;
+    }
+    public void setHasBounced(boolean value) {
+        hasBouncedThisFrame = value;
     }
     public void bounceOff(GameObject other) {
-            Rectangle ballRect = this.getBounds();
-            Rectangle otherRect = other.getBounds();
+        Rectangle ballRect = this.getBounds();
+        Rectangle otherRect = other.getBounds();
 
-            if(!ballRect.intersects(otherRect)) return ;
+        if(!ballRect.intersects(otherRect)) return ;
 
-            Rectangle intersection = ballRect.intersection(otherRect);
+        Rectangle intersection = ballRect.intersection(otherRect);
 
         if (other instanceof Paddle) {
 
@@ -93,28 +101,44 @@ public class Ball extends MovableObject {
         }
         else {
             if (intersection.width < intersection.height) {
+                if (x < other.x) x -= intersection.width;
+                else x += intersection.width;
                 directionX *= -1;
-            } else if (intersection.width >= intersection.height) {
+            } else if (intersection.width > intersection.height) {
+                if (y < other.y) y -= intersection.height;
+                else y += intersection.height;
+                directionY *= -1;
+            } else {
+                // Va góc
+                if (x < other.x) x -= intersection.width;
+                else x += intersection.width;
+                if (y < other.y) y -= intersection.height;
+                else y += intersection.height;
+                directionX *= -1;
                 directionY *= -1;
             }
 
-       }
+
+        }
     }
     public boolean checkCollision(GameObject other) {
-            Rectangle ballBounds = this.getBounds();
-            Rectangle otherBounds = other.getBounds();
-            return ballBounds.intersects(otherBounds);
+        Rectangle ballBounds = this.getBounds();
+        Rectangle otherBounds = other.getBounds();
+        return ballBounds.intersects(otherBounds);
     }
 
     public void setSpeed(int speed) {
         this.speed=speed;
     }
-    public void vachamX() {
-        directionX*=-1;
+    public double getDirectionX() {
+        return directionX;
 
     }
-    public void vachamY() {
-        directionY*=-1;
+    public double getDirectionY() {
+        return directionY;
+    }
+    public int getSpeed() {
+        return speed;
     }
 
 }

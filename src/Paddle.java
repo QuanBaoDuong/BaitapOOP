@@ -7,7 +7,7 @@ public class Paddle extends MovableObject {
     private Image paddleImage;
 
     public Paddle(int x, int y) {
-        super(x, y, 175, 35, 0, 0);
+        super(x, y, 150, 30, 0, 0);
 
         // Thử tải ảnh paddle, nếu không có thì sẽ tô màu xanh dương
         try {

@@ -13,7 +13,6 @@ public class GameJpanel extends JPanel implements ActionListener, KeyListener {
     private java.util.List<PowerUp> powerUps = new ArrayList<>();
     private java.util.List<PowerUp> activePowerUps = new ArrayList<>();
 
-
     public GameJpanel() {
         setFocusable(true);
         addKeyListener(this);
