@@ -4,99 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8239e84a-a218-47f7-b4b2-71c2c0c829eb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PlayState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PowerUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PowerUp.java" afterDir="false" />
+    <list default="true" id="2029db41-e102-4583-9589-5037f3133d39" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameJpanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameJpanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 5
-}</component>
-  <component name="ProjectId" id="33VJkxgtFyltiZboRLXDDnvn2UP" />
-  <component name="ProjectViewState">
-    <option name="abbreviatePackageNames" value="true" />
-    <option name="autoscrollFromSource" value="true" />
-    <option name="autoscrollToSource" value="true" />
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="false" />
-    <option name="showScratchesAndConsoles" value="false" />
-    <option name="sortByType" value="true" />
-    <option name="sortKey" value="BY_TYPE" />
-  </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Ball.executor&quot;: &quot;Run&quot;,
-    &quot;Application.GameJframe.executor&quot;: &quot;Run&quot;,
-    &quot;Application.GameJpanel.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Paddle.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Unnamed.executor": "Run",
+    "git-widget-placeholder": "Merging master"
   }
-}</component>
-  <component name="RunManager" selected="Application.GameJframe">
-    <configuration name="Ball" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Ball" />
-      <module name="oop" />
-      <method v="2" />
-    </configuration>
-    <configuration name="GameJframe" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GameJframe" />
       <module name="oop" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GameJpanel" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="GameJpanel" />
-      <module name="oop" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Paddle" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Paddle" />
-      <module name="oop" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.GameJframe" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="8239e84a-a218-47f7-b4b2-71c2c0c829eb" name="Changes" comment="" />
-      <created>1759396452556</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1759396452556</updated>
-    </task>
     <servers />
   </component>
 </project>
