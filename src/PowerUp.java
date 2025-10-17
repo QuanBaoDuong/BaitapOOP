@@ -44,7 +44,7 @@ public abstract class PowerUp extends GameObject {
 
     public static PowerUp generateFromBrick(Brick brick) {
         Random rand = new Random();
-        if (rand.nextInt(100) < 30) { // 30% rơi
+        if (rand.nextInt(100) < 15) { // 15% rơi
             int x = brick.x + brick.width / 2 - 10;
             int y = brick.y + brick.height / 2 - 10;
             switch (rand.nextInt(5)) {
@@ -145,7 +145,7 @@ class ExtraLifePowerUp extends PowerUp {
 // Tăng tốc Paddle
 class QuickPaddlePowerUp extends PowerUp {
     public QuickPaddlePowerUp(int x, int y) {
-        super(x, y, 20, 20, "quickpaddle", 8000);
+        super(x, y, 20, 20, "quickpaddle", 1000);
     }
 
     @Override

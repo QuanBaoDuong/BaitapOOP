@@ -80,7 +80,7 @@ public class Ball extends MovableObject {
                 double relativeIntersect = (ballCenterX - paddleCenterX) / (other.width / 2.0);
                 relativeIntersect = Math.max(-1.0, Math.min(1.0, relativeIntersect)); // Clamp
 
-                double maxBounceAngle = Math.toRadians(60);
+                double maxBounceAngle = Math.toRadians(75 );
                 double bounceAngle = relativeIntersect * maxBounceAngle;
 
                 directionX = Math.sin(bounceAngle);

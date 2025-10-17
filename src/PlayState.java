@@ -28,6 +28,7 @@ public class PlayState implements GameState {
     // === Khởi tạo lại game ===
     public void resetGame() {
         ball = new Ball(400, 400, 30, 30, 1, 1, 8);
+
         paddle = new Paddle(400, 700);
         bricks = Map1.createMap(5, 10, 100, 60);
         powerUps.clear();
@@ -144,3 +145,4 @@ public class PlayState implements GameState {
         else if (keyCode == KeyEvent.VK_RIGHT) paddle.setMoveRight(false);
     }
 }
+
