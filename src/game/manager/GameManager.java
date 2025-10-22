@@ -1,7 +1,7 @@
 package game.manager;
 
 import game.main.GameJframe;
-import game.map.Map1;
+import game.map.Map;
 import game.object.Ball;
 import game.object.Brick;
 import game.object.Paddle;
@@ -16,7 +16,7 @@ import java.util.List;
 public class GameManager {
     private Ball ball;
     private Paddle paddle;
-    private Brick[][] bricks;
+    private List<Brick> bricks;
     private List<PowerUp> powerUps = new ArrayList<>();
 
     private boolean isGameOver = false;
@@ -28,7 +28,7 @@ public class GameManager {
     public void reset() {
         ball = new Ball(400, 400, 30, 30, 1, 1, 8);
         paddle = new Paddle(400, 700);
-        bricks = Map1.createMap(5, 10, 100, 60);
+        bricks = Map.createMap(getClass().getResourceAsStream("/FileDesignMap/MapLv1.txt"), 100,60, 0, 100);
         powerUps.clear();
         isGameOver = false;
     }
@@ -53,15 +53,13 @@ public class GameManager {
         // game.object.Brick collision
         Brick nearestBrick = null;
         int maxArea = -1;
-        for (Brick[] row : bricks) {
-            for (Brick b : row) {
-                if (!b.isDestroyed() && ball.checkCollision(b)) {
-                    Rectangle inter = ball.getBounds().intersection(b.getBounds());
-                    int area = inter.width * inter.height;
-                    if (area > maxArea) {
-                        maxArea = area;
-                        nearestBrick = b;
-                    }
+        for (Brick b : bricks) { // bricks là List<Brick>
+            if (!b.isDestroyed() && ball.checkCollision(b)) {
+                Rectangle inter = ball.getBounds().intersection(b.getBounds());
+                int area = inter.width * inter.height;
+                if (area > maxArea) {
+                    maxArea = area;
+                    nearestBrick = b;
                 }
             }
         }
@@ -105,7 +103,7 @@ public class GameManager {
 
     public Ball getBall() { return ball; }
     public Paddle getPaddle() { return paddle; }
-    public Brick[][] getBricks() { return bricks; }
+    public List<Brick> getBricks() { return bricks; }
     public List<PowerUp> getPowerUps() { return powerUps; }
     public boolean isGameOver() { return isGameOver; }
 }

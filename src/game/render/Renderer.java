@@ -24,9 +24,10 @@ public class Renderer {
         gm.getBall().render(g);
         gm.getPaddle().render(g);
 
-        for (Brick[] row : gm.getBricks()) {
-            for (Brick b : row)
-                if (!b.isDestroyed()) b.render(g);
+        for (Brick b : gm.getBricks()) {
+            if (!b.isDestroyed()) {
+                b.render(g);
+            }
         }
 
         for (PowerUp p : gm.getPowerUps()) {
