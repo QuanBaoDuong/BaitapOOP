@@ -2,10 +2,10 @@
 import java.awt.*;
 
 public class BallInteraction {
-    private Ball ball;
-    private Paddle paddle;
+    private game.object.Ball ball;
+    private game.object.Paddle paddle;
 
-    public BallInteraction(Ball ball, Paddle paddle) {
+    public BallInteraction(game.object.Ball ball, game.object.Paddle paddle) {
         this.ball = ball;
         this.paddle = paddle;
     }
@@ -16,7 +16,7 @@ public class BallInteraction {
     }
 
     private void checkWallInteraction() {
-        if (ball.getX() <= 0 || ball.getX() + ball.getWidth() >= GameJframe.SCREEN_WIDTH) {
+        if (ball.getX() <= 0 || ball.getX() + ball.getWidth() >= game.main.GameJframe.SCREEN_WIDTH) {
             ball.reverseX();
         }
         if (ball.getY() <= 0) {
@@ -32,7 +32,7 @@ public class BallInteraction {
     }
 
     public boolean isBallOutOfBounds() {
-        return ball.getY() > GameJframe.SCREEN_HEIGHT;
+        return ball.getY() > game.main.GameJframe.SCREEN_HEIGHT;
     }
 }
 */
