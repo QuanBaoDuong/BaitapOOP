@@ -31,12 +31,15 @@ public class Ball extends MovableObject {
         x+=speed*directionX;
         y+=speed*directionY;
         if(x+width>= GameJframe.SCREEN_WIDTH){
+            x = GameJframe.SCREEN_WIDTH - width;
             directionX*=-1;
         }
         if(x<=0) {
+            x = 0;
             directionX*=-1;
         }
         if(y<=0) {
+            y = 0;
             directionY*=-1;
         }
            /* if(y+height>=game.main.GameJframe.SCREEN_HEIGHT) {
