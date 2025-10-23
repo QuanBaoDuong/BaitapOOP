@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2029db41-e102-4583-9589-5037f3133d39" name="Changes" comment="" />
+    <list default="true" id="8239e84a-a218-47f7-b4b2-71c2c0c829eb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/manager/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/manager/GameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/sound/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/sound/Sound.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,10 +25,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 8
+  &quot;associatedIndex&quot;: 5
 }</component>
-  <component name="ProjectId" id="34MsPljQfFrK5rxQkKpyJSOldtR" />
+  <component name="ProjectId" id="33VJkxgtFyltiZboRLXDDnvn2UP" />
   <component name="ProjectViewState">
     <option name="abbreviatePackageNames" value="true" />
     <option name="autoscrollFromSource" value="true" />
@@ -37,42 +40,68 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Ball.executor": "Run",
     "Application.GameJframe.executor": "Run",
-    "Application.Unnamed.executor": "Run",
+    "Application.GameJpanel.executor": "Run",
+    "Application.Paddle.executor": "Run",
+    "Application.game.main.GameJframe.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master"
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="GameJframe" type="Application" factoryName="Application" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.game.main.GameJframe">
+    <configuration name="Ball" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Ball" />
+      <module name="oop" />
+      <method v="2" />
+    </configuration>
+    <configuration name="GameJpanel" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="GameJpanel" />
+      <module name="oop" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Paddle" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Paddle" />
+      <module name="oop" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <method v="2" />
+    </configuration>
+    <configuration name="game.main.GameJframe" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="game.main.GameJframe" />
       <module name="oop" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Ball" />
+      <item itemvalue="Application.GameJpanel" />
+      <item itemvalue="Application.Paddle" />
+      <item itemvalue="Application.game.main.GameJframe" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.game.main.GameJframe" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2029db41-e102-4583-9589-5037f3133d39" name="Changes" comment="" />
-      <created>1761034754598</created>
+      <changelist id="8239e84a-a218-47f7-b4b2-71c2c0c829eb" name="Changes" comment="" />
+      <created>1759396452556</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1761034754598</updated>
+      <updated>1759396452556</updated>
     </task>
     <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>

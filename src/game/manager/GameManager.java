@@ -89,8 +89,10 @@ public class GameManager {
             ball.setY((int)(ball.getY() + ball.getDirectionY() * 2));
             Sound.playSound("break.wav", false);
 
-            PowerUp newPower = PowerUp.generateFromBrick(nearestBrick);
-            if (newPower != null) powerUps.add(newPower);
+            if (nearestBrick.isDestroyed()) {
+                PowerUp newPower = PowerUp.generateFromBrick(nearestBrick);
+                if (newPower != null) powerUps.add(newPower);
+            }
         }
 
         // game.object.PowerUp update
@@ -100,6 +102,7 @@ public class GameManager {
             p.update();
             if (p.getBounds().intersects(paddle.getBounds())) {
                 p.activate(paddle, ball);
+                Sound.playSound("powerup.wav", false);
                 it.remove();
             } else if (p.getY() > GameJframe.SCREEN_HEIGHT) {
                 it.remove();

@@ -18,8 +18,6 @@ public class Sound {
                     return;
                 }
 
-                System.out.println("🎵 Đã tìm thấy file: " + soundURL);
-
                 AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundURL);
                 Clip clip = AudioSystem.getClip();
                 clip.open(audioInputStream);
@@ -29,8 +27,6 @@ public class Sound {
                 } else {
                     clip.start();
                 }
-
-                System.out.println("✅ Đang phát âm thanh: " + fileName);
 
             } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
                 e.printStackTrace();
