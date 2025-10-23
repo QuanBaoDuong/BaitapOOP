@@ -6,6 +6,7 @@ import game.object.Ball;
 import game.object.Brick;
 import game.object.Paddle;
 import game.object.PowerUp;
+import game.sound.Sound;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -54,6 +55,7 @@ public class GameManager {
             lives --;
             if(lives <= 0) {
                 isGameOver = true;
+                Sound.playSound("gameover.wav", false);
             }else {
                 resetBall();
             }
@@ -85,7 +87,7 @@ public class GameManager {
             ball.setHasBounced(true);
             ball.setX((int)(ball.getX() + ball.getDirectionX() * 2));
             ball.setY((int)(ball.getY() + ball.getDirectionY() * 2));
-
+            Sound.playSound("break.wav", false);
 
             PowerUp newPower = PowerUp.generateFromBrick(nearestBrick);
             if (newPower != null) powerUps.add(newPower);

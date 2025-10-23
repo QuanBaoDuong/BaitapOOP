@@ -1,6 +1,7 @@
 package game.state;
 
 import game.manager.GameStateManager;
+import game.sound.Sound;
 
 import javax.swing.*;
 import java.awt.*;
@@ -43,6 +44,8 @@ public class MenuState implements GameState, MouseListener, MouseMotionListener 
             int x = 440;
             int y = 300;
             optionBounds[0] = new Rectangle(x, y, buttonWidth, buttonHeight);
+
+            Sound.playSound("/bgm.wav", true);
         }
         @Override
         public void update() {}
