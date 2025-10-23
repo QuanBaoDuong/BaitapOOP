@@ -20,6 +20,7 @@ public class GameManager {
     private List<Brick> bricks;
     private List<PowerUp> powerUps = new ArrayList<>();
     private int lives ;
+    private int score;
 
     private boolean isGameOver = false;
 
@@ -34,6 +35,8 @@ public class GameManager {
         powerUps.clear();
         isGameOver = false;
         lives = 3;
+        score = 0;
+
     }
 
     private void resetBall () {
@@ -91,6 +94,7 @@ public class GameManager {
 
             if (nearestBrick.isDestroyed()) {
                 PowerUp newPower = PowerUp.generateFromBrick(nearestBrick);
+                score += 100;
                 if (newPower != null) powerUps.add(newPower);
             }
         }
@@ -120,10 +124,23 @@ public class GameManager {
         if (keyCode == KeyEvent.VK_LEFT) paddle.setMoveLeft(false);
         else if (keyCode == KeyEvent.VK_RIGHT) paddle.setMoveRight(false);
     }
+    public void drawInfo(Graphics2D g) {
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Arial", Font.BOLD, 24));
+
+        // Hiển thị số mạng (ở góc trái)
+        g.drawString("Lives: " + lives, 20, 40);
+
+        // Hiển thị điểm (ở góc phải)
+        g.drawString("Score: " + score, GameJframe.SCREEN_WIDTH - 200, 40);
+    }
+
 
     public Ball getBall() { return ball; }
     public Paddle getPaddle() { return paddle; }
     public List<Brick> getBricks() { return bricks; }
     public List<PowerUp> getPowerUps() { return powerUps; }
     public boolean isGameOver() { return isGameOver; }
+    public int getScore() { return score; }
+    public int getLives() { return lives; }
 }

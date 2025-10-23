@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8239e84a-a218-47f7-b4b2-71c2c0c829eb" name="Changes" comment="">
+    <list default="true" id="8239e84a-a218-47f7-b4b2-71c2c0c829eb" name="Changes" comment="thêm âm thanh lúc ăn powerup và sửa chỉ rơi powerup khi gạch bị phá">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/manager/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/manager/GameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/sound/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/sound/Sound.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,5 +102,9 @@
       <updated>1759396452556</updated>
     </task>
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="thêm âm thanh lúc ăn powerup và sửa chỉ rơi powerup khi gạch bị phá" />
+    <option name="LAST_COMMIT_MESSAGE" value="thêm âm thanh lúc ăn powerup và sửa chỉ rơi powerup khi gạch bị phá" />
   </component>
 </project>

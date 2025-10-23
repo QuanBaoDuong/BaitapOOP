@@ -33,7 +33,10 @@ public class Renderer {
         for (PowerUp p : gm.getPowerUps()) {
             p.render(g);
         }
-
+        g.setFont(new Font("Arial", Font.BOLD, 24));
+        g.setColor(Color.WHITE);
+        g.drawString("Lives: " + gm.getLives(), 20, 40);
+        g.drawString("Score: " + gm.getScore(), GameJframe.SCREEN_WIDTH - 150, 40);
         // Game Over
         if (isGameOver) {
             g.drawImage(
