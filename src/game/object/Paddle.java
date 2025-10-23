@@ -10,8 +10,8 @@ public class Paddle extends MovableObject {
     private boolean moveLeft, moveRight;
     private Image paddleImage;
 
-    public Paddle(int x, int y) {
-        super(x, y, 150, 30, 0, 0);
+    public Paddle(int x, int y, int width, int height) {
+        super(x, y, width, height, 0, 0);
 
         // Thử tải ảnh paddle, nếu không có thì sẽ tô màu xanh dương
         try {
@@ -59,5 +59,21 @@ public class Paddle extends MovableObject {
 
     public int getY() {
         return y;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 }

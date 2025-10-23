@@ -139,13 +139,37 @@ public class Ball extends MovableObject {
     }
     public double getDirectionX() {
         return directionX;
-
     }
+    public void setDirectionX(double directionX) {
+        this.directionX = directionX;
+    }
+
     public double getDirectionY() {
         return directionY;
     }
+
+    public void setDirectionY(double directionY) {
+        this.directionY = directionY;
+    }
+
     public int getSpeed() {
         return speed;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 
 }

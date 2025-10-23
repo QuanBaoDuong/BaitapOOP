@@ -18,6 +18,7 @@ public class GameManager {
     private Paddle paddle;
     private List<Brick> bricks;
     private List<PowerUp> powerUps = new ArrayList<>();
+    private int lives ;
 
     private boolean isGameOver = false;
 
@@ -26,11 +27,20 @@ public class GameManager {
     }
 
     public void reset() {
-        ball = new Ball(400, 400, 30, 30, 1, 1, 8);
-        paddle = new Paddle(400, 700);
+        ball = new Ball(400, 400, 30, 30, 1/Math.sqrt(2), 1/Math.sqrt(2), 8);
+        paddle = new Paddle(400, 700,150,30);
         bricks = Map.createMap(getClass().getResourceAsStream("/FileDesignMap/MapLv1.txt"), 100,60, 0, 100);
         powerUps.clear();
         isGameOver = false;
+        lives = 3;
+    }
+
+    private void resetBall () {
+        ball.setX(paddle.getX() + paddle.getWidth()/2 - ball.getWidth()/2);
+        ball.setY(paddle.getY() - ball.getHeight());
+        ball.setSpeed(8);
+        ball.setDirectionX(1);
+        ball.setDirectionY(1);
     }
 
     public void update() {
@@ -41,7 +51,12 @@ public class GameManager {
 
         // Game over nếu bóng rơi ra ngoài
         if (ball.getY() > GameJframe.SCREEN_HEIGHT) {
-            isGameOver = true;
+            lives --;
+            if(lives <= 0) {
+                isGameOver = true;
+            }else {
+                resetBall();
+            }
             return;
         }
 

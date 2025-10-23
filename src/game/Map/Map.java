@@ -2,6 +2,7 @@ package game.map;
 
 import game.object.Brick;
 import game.object.NormalBrick;
+import game.object.UnbreakableBrick;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,6 +35,9 @@ public class Map {
                             break;
                         case 1:
                             bricks.add(new NormalBrick(x, y, brickWidth, brickHeight));
+                            break;
+                        case 2:
+                            bricks.add(new UnbreakableBrick(x, y, brickWidth, brickHeight));
                             break;
                     }
                 }
