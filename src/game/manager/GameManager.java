@@ -105,7 +105,7 @@ public class GameManager {
             PowerUp p = it.next();
             p.update();
             if (p.getBounds().intersects(paddle.getBounds())) {
-                p.activate(paddle, ball);
+                p.activate(this,paddle, ball);
                 Sound.playSound("powerup.wav", false);
                 it.remove();
             } else if (p.getY() > GameJframe.SCREEN_HEIGHT) {
@@ -134,7 +134,12 @@ public class GameManager {
         // Hiển thị điểm (ở góc phải)
         g.drawString("Score: " + score, GameJframe.SCREEN_WIDTH - 200, 40);
     }
-
+    public void setLives(int newLives){
+        if (newLives >= 3) {
+            newLives = 3;
+        }
+        this.lives = newLives;
+    }
 
     public Ball getBall() { return ball; }
     public Paddle getPaddle() { return paddle; }

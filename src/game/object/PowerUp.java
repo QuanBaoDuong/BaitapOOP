@@ -1,5 +1,7 @@
 package game.object;
 
+import game.manager.GameManager;
+
 import java.awt.*;
 import java.util.Random;
 
@@ -16,17 +18,17 @@ public abstract class PowerUp extends GameObject {
         this.duration = duration;
     }
 
-    public abstract void applyEffect(Paddle paddle, Ball ball);
-    public abstract void removeEffect(Paddle paddle, Ball ball);
+    public abstract void applyEffect(GameManager gm,Paddle paddle, Ball ball);
+    public abstract void removeEffect(GameManager gm,Paddle paddle, Ball ball);
 
     @Override
     public void update() {
         y += speedY;
     }
 
-    public void activate(Paddle paddle, Ball ball) {
+    public void activate(GameManager gm,Paddle paddle, Ball ball) {
         if (!active) {
-            applyEffect(paddle, ball);
+            applyEffect(gm,paddle, ball);
             active = true;
             startTime = System.currentTimeMillis();
         }
@@ -72,12 +74,12 @@ class ExpandPaddlePowerUp extends PowerUp {
     }
 
     @Override
-    public void applyEffect(Paddle paddle, Ball ball) {
+    public void applyEffect(GameManager gm,Paddle paddle, Ball ball) {
         paddle.width += expandAmount;
     }
 
     @Override
-    public void removeEffect(Paddle paddle, Ball ball) {
+    public void removeEffect(GameManager gm,Paddle paddle, Ball ball) {
         paddle.width -= expandAmount;
     }
 
@@ -99,12 +101,12 @@ class ShrinkPaddlePowerUp extends PowerUp {
     }
 
     @Override
-    public void applyEffect(Paddle paddle, Ball ball) {
+    public void applyEffect(GameManager gm,Paddle paddle, Ball ball) {
         paddle.width -= shrinkAmount;
     }
 
     @Override
-    public void removeEffect(Paddle paddle, Ball ball) {
+    public void removeEffect(GameManager gm, Paddle paddle, Ball ball) {
         paddle.width += shrinkAmount;
     }
 
@@ -124,14 +126,15 @@ class ExtraLifePowerUp extends PowerUp {
     }
 
     @Override
-    public void applyEffect(Paddle paddle, Ball ball) {
+    public void applyEffect(GameManager gm,Paddle paddle, Ball ball) {
         // Giả sử có hàm tăng mạng trong paddle/game
         // paddle.getGamePanel().increaseLives()
-        System.out.println("Extra life!");
+
+        gm.setLives(gm.getLives() + 1);
     }
 
     @Override
-    public void removeEffect(Paddle paddle, Ball ball) {
+    public void removeEffect(GameManager gm,Paddle paddle, Ball ball) {
         // Không cần
     }
 
@@ -151,12 +154,12 @@ class QuickPaddlePowerUp extends PowerUp {
     }
 
     @Override
-    public void applyEffect(Paddle paddle, Ball ball) {
+    public void applyEffect(GameManager gm,Paddle paddle, Ball ball) {
         paddle.setSpeed(paddle.getSpeed()+8);
     }
 
     @Override
-    public void removeEffect(Paddle paddle, Ball ball) {
+    public void removeEffect(GameManager gm,Paddle paddle, Ball ball) {
         paddle.setSpeed(paddle.getSpeed()-8);
     }
 
@@ -176,12 +179,12 @@ class QuickBallPowerUp extends PowerUp {
     }
 
     @Override
-    public void applyEffect(Paddle paddle, Ball ball) {
+    public void applyEffect(GameManager gm,Paddle paddle, Ball ball) {
         ball.setSpeed(ball.getSpeed()+8);
     }
 
     @Override
-    public void removeEffect(Paddle paddle, Ball ball) {
+    public void removeEffect(GameManager gm,Paddle paddle, Ball ball) {
         ball.setSpeed(ball.getSpeed() -8);
     }
 
