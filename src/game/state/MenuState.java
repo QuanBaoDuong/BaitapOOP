@@ -73,10 +73,10 @@ public class MenuState implements GameState, MouseListener, MouseMotionListener 
 
             // Vẽ nút "Quay lại"
             g.setColor(new Color(70, 130, 180));
-            g.fillRoundRect(440, 500, 140, 40, 15, 15);
+            g.fillRoundRect(440, 750, 140, 40, 15, 15);
             g.setColor(Color.WHITE);
             g.setFont(new Font("Arial", Font.BOLD, 16));
-            g.drawString("QUAY LẠI", 465, 525);
+            g.drawString("QUAY LẠI", 465, 775);
         } else {
             // Vẽ menu chính
             g.drawImage(backGroundMenu, 0, 0, null);
@@ -93,7 +93,7 @@ public class MenuState implements GameState, MouseListener, MouseMotionListener 
     public void mouseClicked(MouseEvent e) {
         if (showingGuide) {
             // Kiểm tra click vào nút "Quay lại" (vị trí cố định)
-            Rectangle backButton = new Rectangle(440, 500, 140, 40);
+            Rectangle backButton = new Rectangle(440, 750, 140, 40);
             if (backButton.contains(e.getPoint())) {
                 showingGuide = false;
             }
