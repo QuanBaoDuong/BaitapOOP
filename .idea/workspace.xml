@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="8239e84a-a218-47f7-b4b2-71c2c0c829eb" name="Changes" comment="thêm âm thanh lúc ăn powerup và sửa chỉ rơi powerup khi gạch bị phá">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+    <list default="true" id="8239e84a-a218-47f7-b4b2-71c2c0c829eb" name="Changes" comment="....">
+>>>>>>> 54012d6c15ee4bc7e2f1808ae920da936e1b10ad
       <change beforePath="$PROJECT_DIR$/src/game/state/MenuState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/state/MenuState.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,6 +26,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -105,6 +110,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="thêm âm thanh lúc ăn powerup và sửa chỉ rơi powerup khi gạch bị phá" />
-    <option name="LAST_COMMIT_MESSAGE" value="thêm âm thanh lúc ăn powerup và sửa chỉ rơi powerup khi gạch bị phá" />
+    <MESSAGE value="fafa" />
+    <MESSAGE value="...." />
+    <option name="LAST_COMMIT_MESSAGE" value="...." />
   </component>
 </project>
