@@ -2,11 +2,11 @@ package game.object;
 
 import game.main.GameJframe;
 
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
 
 public class Paddle extends MovableObject {
-    public int speed = 16;
+    private int speed = 16;
     private boolean moveLeft, moveRight;
     private Image paddleImage;
 
@@ -54,6 +54,9 @@ public class Paddle extends MovableObject {
     }
 
     public void setSpeed(int speed) {
+        if(this.speed>=30){
+            this.speed=30;
+        }
         this.speed = speed;
     }
 
@@ -68,7 +71,9 @@ public class Paddle extends MovableObject {
     public int getHeight() {
         return height;
     }
-
+    public int getSpeed() {
+        return speed;
+    }
     public void setWidth(int width) {
         this.width = width;
     }

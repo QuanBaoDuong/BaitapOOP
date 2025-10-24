@@ -126,7 +126,7 @@ class ExtraLifePowerUp extends PowerUp {
     @Override
     public void applyEffect(Paddle paddle, Ball ball) {
         // Giả sử có hàm tăng mạng trong paddle/game
-        // paddle.getGamePanel().increaseLives();
+        // paddle.getGamePanel().increaseLives()
         System.out.println("Extra life!");
     }
 
@@ -152,12 +152,12 @@ class QuickPaddlePowerUp extends PowerUp {
 
     @Override
     public void applyEffect(Paddle paddle, Ball ball) {
-        paddle.speed *= 2;
+        paddle.setSpeed(paddle.getSpeed()+8);
     }
 
     @Override
     public void removeEffect(Paddle paddle, Ball ball) {
-        paddle.speed /= 2;
+        paddle.setSpeed(paddle.getSpeed()-8);
     }
 
     @Override
@@ -177,12 +177,12 @@ class QuickBallPowerUp extends PowerUp {
 
     @Override
     public void applyEffect(Paddle paddle, Ball ball) {
-        ball.setSpeed(ball.getSpeed()*2);
+        ball.setSpeed(ball.getSpeed()+8);
     }
 
     @Override
     public void removeEffect(Paddle paddle, Ball ball) {
-        ball.setSpeed(ball.getSpeed() /2);
+        ball.setSpeed(ball.getSpeed() -8);
     }
 
     @Override
