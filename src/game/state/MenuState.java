@@ -120,7 +120,7 @@ public class MenuState implements GameState, MouseListener, MouseMotionListener 
         switch (index) {
             case 0: // NEW GAME
                 gameStateManager.setStates(new PlayState(panel, gameStateManager));
-                Sound.playSound("bgm.wav", false);
+                Sound.playSound("bgm.wav", true);
                 break;
             case 1: // HƯỚNG DẪN
                 showingGuide = true;

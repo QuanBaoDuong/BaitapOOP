@@ -33,7 +33,6 @@ public class PlayState implements GameState {
     @Override
     public void update() {
         if (isGameOver) return;
-
         gameManager.update();
         if (gameManager.isGameOver()) {
             isGameOver = true;
