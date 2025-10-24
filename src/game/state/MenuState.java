@@ -1,6 +1,7 @@
 package game.state;
 
 import game.manager.GameStateManager;
+import game.sound.Sound;
 
 import javax.swing.*;
 import java.awt.*;
@@ -110,6 +111,7 @@ public class MenuState implements GameState, MouseListener, MouseMotionListener 
         switch (index) {
             case 0: // NEW GAME
                 gameStateManager.setStates(new PlayState(panel, gameStateManager));
+                Sound.playSound("bgm.wav", false);
                 break;
             case 1: // HƯỚNG DẪN - THÊM
                 showingGuide = true;

@@ -2,8 +2,8 @@ package game.object;
 
 import game.main.GameJframe;
 
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
 
 public class Ball extends MovableObject {
     private double directionX;
