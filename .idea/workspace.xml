@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8239e84a-a218-47f7-b4b2-71c2c0c829eb" name="Changes" comment="....">
+    <list default="true" id="2029db41-e102-4583-9589-5037f3133d39" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/game/manager/HighScoreManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/state/HighScoreState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/manager/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/manager/GameManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/state/MenuState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/state/MenuState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/state/PlayState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/state/PlayState.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,12 +26,12 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 5
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 8
 }</component>
-  <component name="ProjectId" id="33VJkxgtFyltiZboRLXDDnvn2UP" />
+  <component name="ProjectId" id="34MsPljQfFrK5rxQkKpyJSOldtR" />
   <component name="ProjectViewState">
     <option name="abbreviatePackageNames" value="true" />
     <option name="autoscrollFromSource" value="true" />
@@ -39,74 +44,42 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;Application.Ball.executor&quot;: &quot;Run&quot;,
     &quot;Application.GameJframe.executor&quot;: &quot;Run&quot;,
-    &quot;Application.GameJpanel.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Paddle.executor&quot;: &quot;Run&quot;,
-    &quot;Application.game.main.GameJframe.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.game.main.GameJframe">
-    <configuration name="Ball" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Ball" />
-      <module name="oop" />
-      <method v="2" />
-    </configuration>
-    <configuration name="GameJpanel" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="GameJpanel" />
-      <module name="oop" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Paddle" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Paddle" />
-      <module name="oop" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <method v="2" />
-    </configuration>
-    <configuration name="game.main.GameJframe" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager">
+    <configuration name="GameJframe" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="game.main.GameJframe" />
       <module name="oop" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Application.Ball" />
-      <item itemvalue="Application.GameJpanel" />
-      <item itemvalue="Application.Paddle" />
-      <item itemvalue="Application.game.main.GameJframe" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.game.main.GameJframe" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8239e84a-a218-47f7-b4b2-71c2c0c829eb" name="Changes" comment="" />
-      <created>1759396452556</created>
+      <changelist id="2029db41-e102-4583-9589-5037f3133d39" name="Changes" comment="" />
+      <created>1761034754598</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1759396452556</updated>
+      <updated>1761034754598</updated>
     </task>
     <servers />
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="thêm âm thanh lúc ăn powerup và sửa chỉ rơi powerup khi gạch bị phá" />
-    <MESSAGE value="fafa" />
-    <MESSAGE value="...." />
-    <option name="LAST_COMMIT_MESSAGE" value="...." />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
