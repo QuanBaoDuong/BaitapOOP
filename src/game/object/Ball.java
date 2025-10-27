@@ -135,6 +135,9 @@ public class Ball extends MovableObject {
     }
 
     public void setSpeed(int speed) {
+        if(this.speed>=40){
+            this.speed=40;
+        }
         this.speed=speed;
     }
     public double getDirectionX() {

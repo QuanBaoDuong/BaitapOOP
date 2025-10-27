@@ -19,7 +19,7 @@ public class GameManager {
     private Paddle paddle;
     private List<Brick> bricks;
     private List<PowerUp> powerUps = new ArrayList<>();
-    private int lives ;
+    private int lives;
     private int score;
 
     private boolean isGameOver = false;
@@ -29,9 +29,9 @@ public class GameManager {
     }
 
     public void reset() {
-        ball = new Ball(400, 400, 30, 30, 1/Math.sqrt(2), 1/Math.sqrt(2), 8);
-        paddle = new Paddle(400, 700,150,30);
-        bricks = Map.createMap(getClass().getResourceAsStream("/FileDesignMap/MapLv1.txt"), 100,60, 0, 100);
+        ball = new Ball(400, 400, 30, 30, 1 / Math.sqrt(2), 1 / Math.sqrt(2), 8);
+        paddle = new Paddle(400, 700, 150, 30);
+        bricks = Map.createMap(getClass().getResourceAsStream("/FileDesignMap/MapLv1.txt"), 100, 60, 0, 100);
         powerUps.clear();
         isGameOver = false;
         lives = 3;
@@ -39,8 +39,8 @@ public class GameManager {
 
     }
 
-    private void resetBall () {
-        ball.setX(paddle.getX() + paddle.getWidth()/2 - ball.getWidth()/2);
+    private void resetBall() {
+        ball.setX(paddle.getX() + paddle.getWidth() / 2 - ball.getWidth() / 2);
         ball.setY(paddle.getY() - ball.getHeight());
         ball.setSpeed(8);
         ball.setDirectionX(1);
@@ -55,11 +55,11 @@ public class GameManager {
 
         // Game over nếu bóng rơi ra ngoài
         if (ball.getY() > GameJframe.SCREEN_HEIGHT) {
-            lives --;
-            if(lives <= 0) {
+            lives--;
+            if (lives <= 0) {
                 isGameOver = true;
                 Sound.playSound("gameover.wav", false);
-            }else {
+            } else {
                 resetBall();
             }
             return;
@@ -88,8 +88,8 @@ public class GameManager {
             ball.bounceOff(nearestBrick);
             nearestBrick.takeHit();
             ball.setHasBounced(true);
-            ball.setX((int)(ball.getX() + ball.getDirectionX() * 2));
-            ball.setY((int)(ball.getY() + ball.getDirectionY() * 2));
+            ball.setX((int) (ball.getX() + ball.getDirectionX() * 2));
+            ball.setY((int) (ball.getY() + ball.getDirectionY() * 2));
             Sound.playSound("break.wav", false);
 
             if (nearestBrick.isDestroyed()) {
@@ -105,7 +105,7 @@ public class GameManager {
             PowerUp p = it.next();
             p.update();
             if (p.getBounds().intersects(paddle.getBounds())) {
-                p.activate(paddle, ball);
+                p.activate(this,paddle, ball);
                 Sound.playSound("powerup.wav", false);
                 it.remove();
             } else if (p.getY() > GameJframe.SCREEN_HEIGHT) {
@@ -124,6 +124,7 @@ public class GameManager {
         if (keyCode == KeyEvent.VK_LEFT) paddle.setMoveLeft(false);
         else if (keyCode == KeyEvent.VK_RIGHT) paddle.setMoveRight(false);
     }
+
     public void drawInfo(Graphics2D g) {
         g.setColor(Color.WHITE);
         g.setFont(new Font("Arial", Font.BOLD, 24));
@@ -134,13 +135,38 @@ public class GameManager {
         // Hiển thị điểm (ở góc phải)
         g.drawString("Score: " + score, GameJframe.SCREEN_WIDTH - 200, 40);
     }
+    public void setLives(int newLives){
+        if (newLives >= 3) {
+            newLives = 3;
+        }
+        this.lives = newLives;
+    }
 
+    public Ball getBall() {
+        return ball;
+    }
 
-    public Ball getBall() { return ball; }
-    public Paddle getPaddle() { return paddle; }
-    public List<Brick> getBricks() { return bricks; }
-    public List<PowerUp> getPowerUps() { return powerUps; }
-    public boolean isGameOver() { return isGameOver; }
-    public int getScore() { return score; }
-    public int getLives() { return lives; }
+    public Paddle getPaddle() {
+        return paddle;
+    }
+
+    public List<Brick> getBricks() {
+        return bricks;
+    }
+
+    public List<PowerUp> getPowerUps() {
+        return powerUps;
+    }
+
+    public boolean isGameOver() {
+        return isGameOver;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public int getLives() {
+        return lives;
+    }
 }
