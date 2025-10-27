@@ -10,6 +10,7 @@ import game.sound.Sound;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -21,8 +22,12 @@ public class GameManager {
     private List<PowerUp> powerUps = new ArrayList<>();
     private int lives;
     private int score;
+    private int currentLevel = 1;
+    private final int max_level = 2;
 
     private boolean isGameOver = false;
+    private boolean isGameWin = false;
+    private boolean levelComplete = false;
 
     public GameManager() {
         reset();
@@ -31,12 +36,17 @@ public class GameManager {
     public void reset() {
         ball = new Ball(400, 400, 30, 30, 1 / Math.sqrt(2), 1 / Math.sqrt(2), 8);
         paddle = new Paddle(400, 700, 150, 30);
-        bricks = Map.createMap(getClass().getResourceAsStream("/FileDesignMap/MapLv1.txt"), 100, 60, 0, 100);
+        loadLevel(currentLevel);
         powerUps.clear();
         isGameOver = false;
         lives = 3;
         score = 0;
 
+    }
+
+    public void restartGame() {
+        currentLevel = 1;
+        reset();
     }
 
     private void resetBall() {
@@ -47,8 +57,32 @@ public class GameManager {
         ball.setDirectionY(1);
     }
 
+    private void resetPaddle() {
+        // Đặt paddle ở giữa màn hình (theo chiều ngang)
+        int newX = GameJframe.SCREEN_WIDTH / 2 - paddle.getWidth() / 2;
+        int newY = 700; // vị trí chuẩn của paddle, có thể điều chỉnh tùy game bạn
+        paddle.setX(newX);
+        paddle.setY(newY);
+
+        // Dừng di chuyển
+        paddle.setMoveLeft(false);
+        paddle.setMoveRight(false);
+    }
+
+    private void loadLevel(int level) {
+        String path = "/FileDesignMap/MapLv"+level+".txt";
+        InputStream is = getClass().getResourceAsStream(path);
+        if (is != null) {
+            bricks = Map.createMap(is, 100, 60, 0, 100);
+        }
+        else {
+            bricks = new ArrayList<>();
+        }
+    }
+
     public void update() {
         if (isGameOver) return;
+        if (isGameWin) return;
 
         ball.update();
         paddle.update();
@@ -112,6 +146,32 @@ public class GameManager {
                 it.remove();
             }
         }
+
+        // --- Kiểm tra qua màn ---
+        boolean allDestroyed = true;
+        for (Brick b : bricks) {
+            if (!b.isDestroyed()) {
+                allDestroyed = false;
+                break;
+            }
+        }
+        if (allDestroyed) {
+            levelComplete=true;
+        }
+
+    }
+
+    public void nextLevel() {
+        currentLevel++;
+        if(currentLevel>max_level) {
+            isGameWin=true;
+        }
+        else {
+            loadLevel(currentLevel);
+            resetBall();
+            resetPaddle();
+            levelComplete=false;
+        }
     }
 
     // --- Getter & Key control ---
@@ -124,6 +184,7 @@ public class GameManager {
         if (keyCode == KeyEvent.VK_LEFT) paddle.setMoveLeft(false);
         else if (keyCode == KeyEvent.VK_RIGHT) paddle.setMoveRight(false);
     }
+
 
     public void drawInfo(Graphics2D g) {
         g.setColor(Color.WHITE);
@@ -162,11 +223,26 @@ public class GameManager {
         return isGameOver;
     }
 
+    public boolean isGameWin() {
+        return isGameWin;
+    }
+
     public int getScore() {
         return score;
     }
 
     public int getLives() {
         return lives;
+    }
+    public int getCurrentLevel() {
+        return this.currentLevel;
+    }
+
+    public boolean isLevelComplete() {
+        return levelComplete;
+    }
+
+    public void setLevelComplete(boolean levelComplete) {
+        this.levelComplete = levelComplete;
     }
 }

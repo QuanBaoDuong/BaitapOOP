@@ -119,16 +119,24 @@ public class MenuState implements GameState, MouseListener, MouseMotionListener 
     private void executeOption(int index) {
         switch (index) {
             case 0: // NEW GAME
+                panel.removeMouseListener(this);
+                panel.removeMouseMotionListener(this);
                 gameStateManager.setStates(new PlayState(panel, gameStateManager));
                 Sound.playSound("bgm.wav", true);
                 break;
             case 1: // HƯỚNG DẪN
+                panel.removeMouseListener(this);
+                panel.removeMouseMotionListener(this);
                 showingGuide = true;
                 break;
             case 2: // HIGH SCORES
+                panel.removeMouseListener(this);
+                panel.removeMouseMotionListener(this);
                 gameStateManager.setStates(new HighScoreState(panel, gameStateManager));
                 break;
             case 3: // EXIT GAME
+                panel.removeMouseListener(this);
+                panel.removeMouseMotionListener(this);
                 System.exit(0);
                 break;
         }
