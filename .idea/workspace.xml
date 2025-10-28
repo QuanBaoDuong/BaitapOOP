@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2029db41-e102-4583-9589-5037f3133d39" name="Changes" comment="1">
-      <change afterPath="$PROJECT_DIR$/src/FileDesignMap/MapLv2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FileDesignMap/MapLv3.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FileDesignMap/MapLv1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileDesignMap/MapLv1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileDesignMap/MapLv2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileDesignMap/MapLv2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/manager/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/manager/GameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/object/Brick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/object/Brick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/object/NormalBrick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/object/NormalBrick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/object/PowerUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/object/PowerUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/object/UnbreakableBrick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/object/UnbreakableBrick.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/render/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/render/Renderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/state/MenuState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/state/MenuState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/state/PlayState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/state/PlayState.java" afterDir="false" />
@@ -43,16 +48,16 @@
     <option name="sortByType" value="true" />
     <option name="sortKey" value="BY_TYPE" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.GameJframe.executor": "Run",
-    "Application.Unnamed.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.GameJframe.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="GameJframe" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="game.main.GameJframe" />
