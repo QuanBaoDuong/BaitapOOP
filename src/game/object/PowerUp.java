@@ -1,15 +1,17 @@
 package game.object;
 
 import game.manager.GameManager;
-
 import java.awt.*;
 import java.util.Random;
 
+/**
+ * Lớp trừu tượng đại diện cho một Power-Up (vật phẩm rơi ra từ Brick).
+ */
 public abstract class PowerUp extends GameObject {
     protected double speedY = 2;
     protected String type;
-    protected boolean active;
-    protected long duration; // thời gian hiệu lực
+    protected boolean active = false;
+    protected long duration; // thời gian hiệu lực (ms)
     protected long startTime;
 
     public PowerUp(int x, int y, int width, int height, String type, long duration) {
@@ -18,17 +20,25 @@ public abstract class PowerUp extends GameObject {
         this.duration = duration;
     }
 
-    public abstract void applyEffect(GameManager gm,Paddle paddle, Ball ball);
-    public abstract void removeEffect(GameManager gm,Paddle paddle, Ball ball);
+    // Các phương thức bắt buộc
+    public abstract void applyEffect(GameManager gm, Paddle paddle, Ball ball);
+    public abstract void removeEffect(GameManager gm, Paddle paddle, Ball ball);
+    public abstract void draw(Graphics2D g2d);
 
     @Override
     public void update() {
         y += speedY;
     }
 
-    public void activate(GameManager gm,Paddle paddle, Ball ball) {
+    @Override
+    public void render(Graphics g) {
+        Graphics2D g2d = (Graphics2D) g;
+        draw(g2d);
+    }
+
+    public void activate(GameManager gm, Paddle paddle, Ball ball) {
         if (!active) {
-            applyEffect(gm,paddle, ball);
+            applyEffect(gm, paddle, ball);
             active = true;
             startTime = System.currentTimeMillis();
         }
@@ -38,19 +48,18 @@ public abstract class PowerUp extends GameObject {
         return active && duration > 0 && System.currentTimeMillis() - startTime > duration;
     }
 
-    @Override
-    public void render(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g;
-        draw(g2d);
+    public String getType() {
+        return type;
     }
 
-    public abstract void draw(Graphics2D g2d);
-
+    // ================== Random sinh PowerUp ==================
     public static PowerUp generateFromBrick(Brick brick) {
         Random rand = new Random();
-        if (rand.nextInt(100) < 15) { // 15% rơi
+        // 15% tỉ lệ rơi
+        if (rand.nextInt(100) < 15) {
             int x = brick.x + brick.width / 2 - 10;
             int y = brick.y + brick.height / 2 - 10;
+
             switch (rand.nextInt(5)) {
                 case 0: return new ExpandPaddlePowerUp(x, y);
                 case 1: return new ShrinkPaddlePowerUp(x, y);
@@ -65,22 +74,22 @@ public abstract class PowerUp extends GameObject {
 
 // ==================== Các lớp con ====================
 
-// Làm dài game.object.Paddle
+// 1️⃣ Mở rộng paddle
 class ExpandPaddlePowerUp extends PowerUp {
-    private int expandAmount = 50;
+    private final int expandAmount = 50;
 
     public ExpandPaddlePowerUp(int x, int y) {
         super(x, y, 20, 20, "expand", 8000);
     }
 
     @Override
-    public void applyEffect(GameManager gm,Paddle paddle, Ball ball) {
-        paddle.width += expandAmount;
+    public void applyEffect(GameManager gm, Paddle paddle, Ball ball) {
+        paddle.width = Math.min(paddle.width + expandAmount, 300);
     }
 
     @Override
-    public void removeEffect(GameManager gm,Paddle paddle, Ball ball) {
-        paddle.width -= expandAmount;
+    public void removeEffect(GameManager gm, Paddle paddle, Ball ball) {
+        paddle.width = Math.max(paddle.width - expandAmount, 50);
     }
 
     @Override
@@ -92,22 +101,22 @@ class ExpandPaddlePowerUp extends PowerUp {
     }
 }
 
-// Làm ngắn game.object.Paddle
+// 2️⃣ Thu nhỏ paddle
 class ShrinkPaddlePowerUp extends PowerUp {
-    private int shrinkAmount = 30;
+    private final int shrinkAmount = 30;
 
     public ShrinkPaddlePowerUp(int x, int y) {
         super(x, y, 20, 20, "shrink", 8000);
     }
 
     @Override
-    public void applyEffect(GameManager gm,Paddle paddle, Ball ball) {
-        paddle.width -= shrinkAmount;
+    public void applyEffect(GameManager gm, Paddle paddle, Ball ball) {
+        paddle.width = Math.max(paddle.width - shrinkAmount, 50);
     }
 
     @Override
     public void removeEffect(GameManager gm, Paddle paddle, Ball ball) {
-        paddle.width += shrinkAmount;
+        paddle.width = Math.min(paddle.width + shrinkAmount, 300);
     }
 
     @Override
@@ -119,23 +128,21 @@ class ShrinkPaddlePowerUp extends PowerUp {
     }
 }
 
-// Thêm mạng
+// 3️⃣ Thêm mạng
 class ExtraLifePowerUp extends PowerUp {
+
     public ExtraLifePowerUp(int x, int y) {
         super(x, y, 20, 20, "extraLife", 0);
     }
 
     @Override
-    public void applyEffect(GameManager gm,Paddle paddle, Ball ball) {
-        // Giả sử có hàm tăng mạng trong paddle/game
-        // paddle.getGamePanel().increaseLives()
-
+    public void applyEffect(GameManager gm, Paddle paddle, Ball ball) {
         gm.setLives(gm.getLives() + 1);
     }
 
     @Override
-    public void removeEffect(GameManager gm,Paddle paddle, Ball ball) {
-        // Không cần
+    public void removeEffect(GameManager gm, Paddle paddle, Ball ball) {
+        // Không cần xóa hiệu ứng
     }
 
     @Override
@@ -147,20 +154,22 @@ class ExtraLifePowerUp extends PowerUp {
     }
 }
 
-// Tăng tốc game.object.Paddle
+// 4️⃣ Tăng tốc paddle
 class QuickPaddlePowerUp extends PowerUp {
+    private final int boost = 8;
+
     public QuickPaddlePowerUp(int x, int y) {
-        super(x, y, 20, 20, "quickpaddle", 1000);
+        super(x, y, 20, 20, "quickpaddle", 5000);
     }
 
     @Override
-    public void applyEffect(GameManager gm,Paddle paddle, Ball ball) {
-        paddle.setSpeed(paddle.getSpeed()+8);
+    public void applyEffect(GameManager gm, Paddle paddle, Ball ball) {
+        paddle.setSpeed((int) (paddle.getSpeed() + boost));
     }
 
     @Override
-    public void removeEffect(GameManager gm,Paddle paddle, Ball ball) {
-        paddle.setSpeed(paddle.getSpeed()-8);
+    public void removeEffect(GameManager gm, Paddle paddle, Ball ball) {
+        paddle.setSpeed((int) Math.max(paddle.getSpeed() - boost, 4));
     }
 
     @Override
@@ -172,20 +181,22 @@ class QuickPaddlePowerUp extends PowerUp {
     }
 }
 
-// Tăng tốc bóng
+// 5️⃣ Tăng tốc bóng
 class QuickBallPowerUp extends PowerUp {
+    private final int boost = 8;
+
     public QuickBallPowerUp(int x, int y) {
         super(x, y, 20, 20, "quickball", 8000);
     }
 
     @Override
-    public void applyEffect(GameManager gm,Paddle paddle, Ball ball) {
-        ball.setSpeed(ball.getSpeed()+8);
+    public void applyEffect(GameManager gm, Paddle paddle, Ball ball) {
+        ball.setSpeed(ball.getSpeed() + boost);
     }
 
     @Override
-    public void removeEffect(GameManager gm,Paddle paddle, Ball ball) {
-        ball.setSpeed(ball.getSpeed() -8);
+    public void removeEffect(GameManager gm, Paddle paddle, Ball ball) {
+        ball.setSpeed(Math.max(ball.getSpeed() - boost, 3));
     }
 
     @Override

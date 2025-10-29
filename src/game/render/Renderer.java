@@ -13,57 +13,70 @@ public class Renderer {
     private final Image gameOverImage;
     private final Image winImage;
     private Image transitionGif;
+    private ImageIcon transitionIcon; // Giữ bản gốc GIF để reset dễ hơn
 
-    public Renderer(Image backgroundImg, Image gameOverImg, Image winImage,Image transitionGif) {
+    private Image setting;
+    private Image settingMenu;
+
+    private boolean showSettingMenu = false;
+
+    public Renderer(Image backgroundImg, Image gameOverImg, Image winImg, Image transitionGif) {
         this.backgroundImage = backgroundImg;
         this.gameOverImage = gameOverImg;
-        this.winImage = winImage;
-        this.transitionGif = transitionGif;
+        this.winImage = winImg;
+
+        setTransitionGif(transitionGif);
     }
 
-    public void render(Graphics g, GameManager gm, boolean isGameOver, boolean isWin,boolean isTransitioning) {
+    public void render(Graphics g, GameManager gm, boolean isGameOver, boolean isWin, boolean isTransitioning) {
+        Graphics2D g2d = (Graphics2D) g;
+
         if (isTransitioning) {
-            // Vẽ ảnh động chuyển cảnh
-            drawCenteredImage(g, transitionGif);
+            // Hiển thị ảnh động chuyển cảnh
+            drawCenteredImage(g2d, transitionGif);
+            Toolkit.getDefaultToolkit().sync(); // đồng bộ khung hình
             return;
         }
 
         // Vẽ background
-        g.drawImage(backgroundImage, 0, 0, null);
+        g2d.drawImage(backgroundImage, 0, 0, GameJframe.SCREEN_WIDTH, GameJframe.SCREEN_HEIGHT, null);
 
         // Vẽ các đối tượng trong game
-        gm.getBall().render(g);
-        gm.getPaddle().render(g);
+        gm.getBall().render(g2d);
+        gm.getPaddle().render(g2d);
 
         for (Brick brick : gm.getBricks()) {
-            if (!brick.isDestroyed()) {
-                brick.render(g);
-            }
+            if (!brick.isDestroyed()) brick.render(g2d);
         }
 
         for (PowerUp powerUp : gm.getPowerUps()) {
-            powerUp.render(g);
+            powerUp.render(g2d);
         }
 
         // Hiển thị thông tin
-        g.setFont(new Font("Arial", Font.BOLD, 24));
-        g.setColor(Color.WHITE);
-        g.drawString("Lives: " + gm.getLives(), 20, 40);
-        g.drawString("Score: " + gm.getScore(), GameJframe.SCREEN_WIDTH - 150, 40);
+        g2d.setFont(new Font("Arial", Font.BOLD, 24));
+        g2d.setColor(Color.WHITE);
+        g2d.drawString("Lives: " + gm.getLives(), 20, 40);
+        g2d.drawString("Score: " + gm.getScore(), GameJframe.SCREEN_WIDTH - 150, 40);
 
-        // Kiểm tra trạng thái Game Over hoặc Win
+        // Hiển thị các trạng thái kết thúc
         if (isGameOver) {
-            drawCenteredImage(g, gameOverImage);
-            drawCenteredText(g, "Press ENTER to Restart", 300);
-        } else if (isWin) {
-            drawCenteredImage(g, winImage);
-            drawCenteredText(g, "Press ENTER for Next Level", 300);
+            drawCenteredImage(g2d, gameOverImage);
+            drawCenteredText(g2d, "Your Score: " + gm.getScore(), -280);
+            drawCenteredText(g2d, "Press ENTER to Restart", 300);
+        }
+        else if (isWin) {
+            drawCenteredImage(g2d, winImage);
+            drawCenteredText(g2d, "Your Score: " + gm.getScore(), -280);
+            drawCenteredText(g2d, "Press ENTER to Restart", 300);
         }
     }
 
     private void drawCenteredImage(Graphics g, Image img) {
-        int x = (GameJframe.SCREEN_WIDTH - img.getWidth(null)) / 2;
-        int y = (GameJframe.SCREEN_HEIGHT - img.getHeight(null)) / 2;
+        int imgWidth = img.getWidth(null);
+        int imgHeight = img.getHeight(null);
+        int x = (GameJframe.SCREEN_WIDTH - imgWidth) / 2;
+        int y = (GameJframe.SCREEN_HEIGHT - imgHeight) / 2;
         g.drawImage(img, x, y, null);
     }
 
@@ -75,8 +88,27 @@ public class Renderer {
         int y = (GameJframe.SCREEN_HEIGHT / 2) + offsetY;
         g.drawString(text, x, y);
     }
-    // Cho phép thay đổi ảnh động khi qua màn
-    public void setTransitionGif(Image transitionGif) {
-        this.transitionGif = transitionGif;
+
+    /**
+     * Cập nhật lại transition GIF — đảm bảo nó luôn bắt đầu từ frame đầu tiên
+     */
+    public void setTransitionGif(Image gifImage) {
+        if (gifImage == null) return;
+        // Buộc flush cache cũ
+        gifImage.flush();
+        this.transitionGif = gifImage;
+
+        // Tạo lại ImageIcon để Java biết đây là animation mới
+        this.transitionIcon = new ImageIcon(gifImage);
+    }
+
+    /**
+     * Được gọi khi bắt đầu transition mới — reset GIF về frame đầu
+     */
+    public void restartTransition() {
+        if (transitionIcon != null) {
+            transitionIcon.getImage().flush();
+            this.transitionGif = new ImageIcon(transitionIcon.getImage()).getImage();
+        }
     }
 }
