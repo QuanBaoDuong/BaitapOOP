@@ -5,7 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2029db41-e102-4583-9589-5037f3133d39" name="Changes" comment="1">
-      <change beforePath="$PROJECT_DIR$/src/image/ExitGame.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/ExitGame.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FileDesignMap/MapLv3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileDesignMap/MapLv1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileDesignMap/MapLv1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileDesignMap/MapLv2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileDesignMap/MapLv2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/manager/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/manager/GameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/object/Brick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/object/Brick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/object/NormalBrick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/object/NormalBrick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/object/PowerUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/object/PowerUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/object/UnbreakableBrick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/object/UnbreakableBrick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/render/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/render/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/state/MenuState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/state/MenuState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/state/PlayState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/state/PlayState.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

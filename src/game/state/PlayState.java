@@ -1,6 +1,7 @@
 package game.state;
 
 import game.manager.GameManager;
+import game.manager.GameStateManager;
 import game.manager.HighScoreManager;
 import game.render.Renderer;
 
@@ -11,6 +12,8 @@ import java.awt.event.KeyEvent;
 public class PlayState implements GameState {
     private final GameManager gameManager;
     private final Renderer renderer;
+    private JPanel panel;
+    private GameStateManager gameStateManager;
 
     private boolean isTransitioning = false;
     private long transitionStartTime;
@@ -21,8 +24,10 @@ public class PlayState implements GameState {
 
     private Image transitionGif;
 
-    public PlayState(JPanel panel) {
+    public PlayState(JPanel panel, GameStateManager gameStateManager) {
         // load assets
+        this.gameStateManager=gameStateManager;
+        this.panel = panel;
         Image bg = new ImageIcon(getClass().getResource("/image/BackGroundgame.png")).getImage();
         Image gameOverImg = new ImageIcon(getClass().getResource("/image/GameOver.png")).getImage();
         Image winImg = new ImageIcon(getClass().getResource("/image/GameWin.jpg")).getImage();
@@ -106,7 +111,8 @@ public class PlayState implements GameState {
     @Override
     public void keyPressed(int keyCode) {
         if ((isGameOver || isGameWin) && keyCode == KeyEvent.VK_ENTER) {
-            restart();
+            HighScoreManager.checkNewScore(gameManager.getScore());
+            gameStateManager.setStates(new HighScoreState(panel, gameStateManager));
             return;
         }
 
