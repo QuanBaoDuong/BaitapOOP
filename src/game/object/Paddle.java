@@ -1,5 +1,5 @@
 package game.object;
-
+//
 import game.main.GameJframe;
 
 import javax.swing.*;
