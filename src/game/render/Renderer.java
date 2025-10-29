@@ -15,10 +15,16 @@ public class Renderer {
     private Image transitionGif;
     private ImageIcon transitionIcon; // Giữ bản gốc GIF để reset dễ hơn
 
+    private Image setting;
+    private Image settingMenu;
+
+    private boolean showSettingMenu = false;
+
     public Renderer(Image backgroundImg, Image gameOverImg, Image winImg, Image transitionGif) {
         this.backgroundImage = backgroundImg;
         this.gameOverImage = gameOverImg;
         this.winImage = winImg;
+
         setTransitionGif(transitionGif);
     }
 
@@ -56,10 +62,12 @@ public class Renderer {
         // Hiển thị các trạng thái kết thúc
         if (isGameOver) {
             drawCenteredImage(g2d, gameOverImage);
+            drawCenteredText(g2d, "Your Score: " + gm.getScore(), -280);
             drawCenteredText(g2d, "Press ENTER to Restart", 300);
         }
         else if (isWin) {
             drawCenteredImage(g2d, winImage);
+            drawCenteredText(g2d, "Your Score: " + gm.getScore(), -280);
             drawCenteredText(g2d, "Press ENTER to Restart", 300);
         }
     }

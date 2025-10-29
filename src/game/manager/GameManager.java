@@ -21,7 +21,7 @@ public class GameManager {
     private int lives;
     private int score;
     private int currentLevel = 1;
-    private final int maxLevel = 5;
+    private final int maxLevel = 1;
 
     private boolean levelComplete = false;
     private boolean outOfLives = false;
