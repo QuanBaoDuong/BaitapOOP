@@ -13,24 +13,19 @@ public class MenuState implements GameState, MouseListener, MouseMotionListener 
     private GameStateManager gameStateManager;
     private JPanel panel;
 
-    private String[] options = {"NEW GAME", "HƯỚNG DẪN","HIGH SCORES", "EXIT GAME"}; // THÊM HƯỚNG DẪN
+    private String[] options = {"NEW GAME", "HƯỚNG DẪN", "HIGH SCORES", "EXIT GAME"};
     private Rectangle[] optionBounds;
     private int currentChoice = -1;
 
     private Image backGroundMenu;
     private Image newGameBig;
     private Image newGame;
-    private Image guideBig;    // THÊM
-    private Image guide;       // THÊM
+    private Image guideBig;
+    private Image guide;
     private Image exitGameBig;
     private Image exitGame;
     private Image highScoreBig;
     private Image highScore;
-
-
-    // Biến để kiểm tra đang ở màn hình hướng dẫn
-    private boolean showingGuide = false;
-    private Image guideImage;  // Ảnh hướng dẫn
 
     public MenuState(JPanel panel, GameStateManager gameStateManager) {
         this.panel = panel;
@@ -43,21 +38,18 @@ public class MenuState implements GameState, MouseListener, MouseMotionListener 
 
         backGroundMenu = new ImageIcon(getClass().getResource("/image/BackGround.jpg")).getImage();
         newGameBig = new ImageIcon(getClass().getResource("/image/NewGame.png")).getImage();
-        guideBig = new ImageIcon(getClass().getResource("/image/Guide.png")).getImage(); // THÊM
+        guideBig = new ImageIcon(getClass().getResource("/image/Guide.png")).getImage();
         exitGameBig = new ImageIcon(getClass().getResource("/image/ExitGame.png")).getImage();
         highScoreBig = new ImageIcon(getClass().getResource("/image/High Scores.png")).getImage();
 
         int buttonWidth = 140;
         int buttonHeight = 40;
         newGame = newGameBig.getScaledInstance(buttonWidth, buttonHeight, Image.SCALE_SMOOTH);
-        guide = guideBig.getScaledInstance(buttonWidth, buttonHeight, Image.SCALE_SMOOTH); // THÊM
+        guide = guideBig.getScaledInstance(buttonWidth, buttonHeight, Image.SCALE_SMOOTH);
         exitGame = exitGameBig.getScaledInstance(buttonWidth, buttonHeight, Image.SCALE_SMOOTH);
         highScore = highScoreBig.getScaledInstance(buttonWidth, buttonHeight, Image.SCALE_SMOOTH);
 
-        // Load ảnh hướng dẫn
-        guideImage = new ImageIcon(getClass().getResource("/image/GuideScreen.png")).getImage();
-
-        // tạo mảng bounds (3 phần tử)
+        // tạo mảng bounds (4 phần tử)
         optionBounds = new Rectangle[options.length];
 
         // xác định vị trí nút
@@ -67,7 +59,6 @@ public class MenuState implements GameState, MouseListener, MouseMotionListener 
         optionBounds[1] = new Rectangle(x, y + 60, buttonWidth, buttonHeight);      // HƯỚNG DẪN
         optionBounds[2] = new Rectangle(x, y + 120, buttonWidth, buttonHeight);     // HIGH SCORES
         optionBounds[3] = new Rectangle(x, y + 180, buttonWidth, buttonHeight);     // EXIT GAME
-
     }
 
     @Override
@@ -75,25 +66,12 @@ public class MenuState implements GameState, MouseListener, MouseMotionListener 
 
     @Override
     public void draw(Graphics g) {
-        if (showingGuide) {
-            // Vẽ màn hình hướng dẫn
-            g.drawImage(guideImage, 0, 0, null);
-
-            // Vẽ nút "Quay lại"
-            g.setColor(new Color(70, 130, 180));
-            g.fillRoundRect(440, 750, 140, 40, 15, 15);
-            g.setColor(Color.WHITE);
-            g.setFont(new Font("Arial", Font.BOLD, 16));
-            g.drawString("QUAY LẠI", 465, 775);
-        } else {
-            // Vẽ menu chính
-            g.drawImage(backGroundMenu, 0, 0, null);
-            g.drawImage(newGame, 440, 300, null);
-            g.drawImage(guide, 440, 360, null);
-            g.drawImage(highScore, 440, 420, null);
-            g.drawImage(exitGame, 440, 480, null);
-
-        }
+        // Vẽ menu chính
+        g.drawImage(backGroundMenu, 0, 0, null);
+        g.drawImage(newGame, 440, 300, null);
+        g.drawImage(guide, 440, 360, null);
+        g.drawImage(highScore, 440, 420, null);
+        g.drawImage(exitGame, 440, 480, null);
     }
 
     @Override public void keyPressed(int keyCode) {}
@@ -101,17 +79,9 @@ public class MenuState implements GameState, MouseListener, MouseMotionListener 
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (showingGuide) {
-            // Kiểm tra click vào nút "Quay lại" (vị trí cố định)
-            Rectangle backButton = new Rectangle(440, 750, 140, 40);
-            if (backButton.contains(e.getPoint())) {
-                showingGuide = false;
-            }
-        } else {
-            for (int i = 0; i < optionBounds.length; i++) {
-                if (optionBounds[i].contains(e.getPoint())) {
-                    executeOption(i);
-                }
+        for (int i = 0; i < optionBounds.length; i++) {
+            if (optionBounds[i].contains(e.getPoint())) {
+                executeOption(i);
             }
         }
     }
@@ -127,7 +97,7 @@ public class MenuState implements GameState, MouseListener, MouseMotionListener 
             case 1: // HƯỚNG DẪN
                 panel.removeMouseListener(this);
                 panel.removeMouseMotionListener(this);
-                showingGuide = true;
+                gameStateManager.push(new GuideState(gameStateManager, panel));
                 break;
             case 2: // HIGH SCORES
                 panel.removeMouseListener(this);
@@ -150,11 +120,9 @@ public class MenuState implements GameState, MouseListener, MouseMotionListener 
     @Override
     public void mouseMoved(MouseEvent e) {
         currentChoice = -1;
-        if (!showingGuide) {
-            for (int i = 0; i < optionBounds.length; i++) {
-                if (optionBounds[i].contains(e.getPoint())) {
-                    currentChoice = i;
-                }
+        for (int i = 0; i < optionBounds.length; i++) {
+            if (optionBounds[i].contains(e.getPoint())) {
+                currentChoice = i;
             }
         }
     }
