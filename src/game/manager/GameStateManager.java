@@ -26,7 +26,7 @@ public class GameStateManager {
     }
 
     // Thay state hiện tại bằng state mới
-    public void setStates(GameState state) {
+    public void setState(GameState state) {
         if (!states.isEmpty()) states.pop();
         states.push(state);
     }

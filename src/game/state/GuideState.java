@@ -4,28 +4,28 @@ import game.manager.GameStateManager;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 
-public class GuideState implements GameState, MouseListener, MouseMotionListener {
-    private GameStateManager gameStateManager;
-    private JPanel panel;
-    private Image guideImage;
-    private Rectangle backButtonBounds;
+public class GuideState implements GameState, MouseListener {
+    private final GameStateManager gsm;
+    private final JPanel panel;
+    private final Image guideImage;
+    private final Rectangle backButtonBounds = new Rectangle(400, 750, 200, 50);
+    private boolean isHoveringBack = false;
 
-    public GuideState(GameStateManager gameStateManager, JPanel panel) {
-        this.gameStateManager = gameStateManager;
+    private static final Font BUTTON_FONT = new Font("Arial", Font.BOLD, 24);
+    private static final Color BUTTON_COLOR = new Color(70, 130, 180);
+    private static final Color BUTTON_HOVER = new Color(100, 160, 210);
+
+    public GuideState(GameStateManager gsm, JPanel panel) {
+        this.gsm = gsm;
         this.panel = panel;
-        guideImage = new ImageIcon(getClass().getResource("/image/GuideScreen.png")).getImage();
+        this.guideImage = new ImageIcon(
+                getClass().getResource("/image/GuideScreen.png")
+        ).getImage();
 
-        // Xác định vị trí nút quay lại
-        backButtonBounds = new Rectangle(400, 750, 200, 50);
-
-        // Thêm mouse listener
         panel.addMouseListener(this);
-        panel.addMouseMotionListener(this);
     }
 
     @Override
@@ -36,42 +36,50 @@ public class GuideState implements GameState, MouseListener, MouseMotionListener
         // Hiển thị ảnh hướng dẫn
         g.drawImage(guideImage, 0, 0, null);
 
-        // Vẽ nút "Quay lại"
-        g.setColor(new Color(70, 130, 180));
-        g.fillRoundRect(400, 750, 200, 50, 25, 25);
+        // Vẽ nút “Quay lại”
+        g.setColor(isHoveringBack ? BUTTON_HOVER : BUTTON_COLOR);
+        g.fillRoundRect(backButtonBounds.x, backButtonBounds.y,
+                backButtonBounds.width, backButtonBounds.height, 25, 25);
+
         g.setColor(Color.WHITE);
-        g.setFont(new Font("Arial", Font.BOLD, 24));
-        g.drawString("QUAY LAI", 440, 785);
+        g.setFont(BUTTON_FONT);
+        g.drawString("QUAY LẠI", backButtonBounds.x + 45, backButtonBounds.y + 35);
     }
-
-    @Override
-    public void keyPressed(int keyCode) {
-        if (keyCode == KeyEvent.VK_ESCAPE || keyCode == KeyEvent.VK_ENTER) {
-            cleanup();
-            gameStateManager.pop();
-        }
-    }
-
-    @Override
-    public void keyReleased(int keyCode) {}
 
     @Override
     public void mouseClicked(MouseEvent e) {
         if (backButtonBounds.contains(e.getPoint())) {
             cleanup();
-            gameStateManager.pop();
+            gsm.setState(new MenuState(panel, gsm)); // Đảm bảo đúng tên hàm
         }
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {}
+    @Override
+    public void mouseExited(MouseEvent e) {
+        isHoveringBack = false;
+        panel.repaint();
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        if (backButtonBounds.contains(e.getPoint())) {
+            isHoveringBack = true;
+            panel.repaint();
+        }
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        isHoveringBack = backButtonBounds.contains(e.getPoint());
+        panel.repaint();
     }
 
     private void cleanup() {
         panel.removeMouseListener(this);
-        panel.removeMouseMotionListener(this);
     }
 
-    @Override public void mousePressed(MouseEvent e) {}
-    @Override public void mouseReleased(MouseEvent e) {}
-    @Override public void mouseEntered(MouseEvent e) {}
-    @Override public void mouseExited(MouseEvent e) {}
-    @Override public void mouseMoved(MouseEvent e) {}
-    @Override public void mouseDragged(MouseEvent e) {}
+    @Override public void keyPressed(int keyCode) {}
+    @Override public void keyReleased(int keyCode) {}
 }

@@ -19,7 +19,7 @@ public class GameJpanel extends JPanel implements KeyListener {
 
         // Khởi tạo game.manager.GameStateManager và menu ban đầu
         gsm = new GameStateManager();
-        gsm.setStates(new MenuState(this, gsm)); // game.state.MenuState xử lý chuột riêng
+        gsm.setState(new MenuState(this, gsm)); // game.state.MenuState xử lý chuột riêng
 
         addKeyListener(this);
 
