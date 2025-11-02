@@ -5,22 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2029db41-e102-4583-9589-5037f3133d39" name="Changes" comment="up lại ảnh">
-      <change afterPath="$PROJECT_DIR$/src/game/state/SelectMapState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2025_8_42_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2025_8_42_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_10_2025_10_19_am_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_10_2025_10_19_am__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/main/GameJpanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/main/GameJpanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/manager/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/manager/GameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/manager/GameStateManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/manager/GameStateManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/state/GuideState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/state/GuideState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/state/HighScoreState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/state/HighScoreState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/state/MenuState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/state/MenuState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/state/PlayState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/state/PlayState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/ExitGame.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/ExitGame.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/High Scores.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/High Scores.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/NewGame.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/NewGame.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/sound/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/sound/Sound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/state/SelectMapState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/state/SelectMapState.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,16 +53,16 @@
     <option name="sortByType" value="true" />
     <option name="sortKey" value="BY_TYPE" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.GameJframe.executor": "Run",
-    "Application.Unnamed.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.GameJframe.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="GameJframe" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="game.main.GameJframe" />

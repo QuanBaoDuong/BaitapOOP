@@ -17,7 +17,7 @@ public class GameManager {
     private List<Brick> bricks;
     private final List<PowerUp> powerUps;
 
-    private int lives;
+    private int lives = 3;
     private int score;
     private int currentLevel;
     private final int maxLevel = 5; // ✅ số map tối đa

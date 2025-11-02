@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.net.URL;
 
 public class Sound {
+    private static Clip bgmClip;
 
     public static void playSound(String fileName, boolean loop) {
+
         new Thread(() -> {
             try {
                 // Tìm file trong classpath (hỗ trợ chạy từ bất kỳ package nào)
@@ -32,5 +34,11 @@ public class Sound {
                 e.printStackTrace();
             }
         }).start();
+    }
+    public static void stopBGM() {
+        if (bgmClip != null && bgmClip.isRunning()) {
+            bgmClip.stop();
+            bgmClip.close();
+        }
     }
 }

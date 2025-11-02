@@ -1,6 +1,7 @@
 package game.state;
 
 import game.manager.GameStateManager;
+import game.sound.Sound;
 
 import javax.swing.*;
 import java.awt.*;
@@ -90,6 +91,8 @@ public class SelectMapState implements GameState, MouseListener, MouseMotionList
         for (int i = 0; i < levelButtons.length; i++) {
             if (levelButtons[i].contains(p)) {
                 cleanup();
+                Sound.stopBGM();
+                Sound.playSound("bgm.wav", true);
                 gameStateManager.setState(new PlayState(panel, gameStateManager, i + 1, true));
                 return;
             }
