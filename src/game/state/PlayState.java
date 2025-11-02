@@ -8,8 +8,10 @@ import game.render.Renderer;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class PlayState implements GameState {
+public class PlayState implements GameState, MouseListener {
     private final GameManager gameManager;
     private final Renderer renderer;
     private final JPanel panel;
@@ -23,14 +25,15 @@ public class PlayState implements GameState {
     private boolean isGameWin = false;
 
     private final boolean singleLevelMode;
+    private final int startLevel;
 
     private Image transitionGif;
 
-    // ✅ Cho phép khởi tạo PlayState với level tùy chọn (phục vụ "Select Map")
-    private final int startLevel;
+    private final Rectangle settingButton = new Rectangle(920, 2, 80, 80);
+    private Image settingIcon;
 
     public PlayState(JPanel panel, GameStateManager gameStateManager) {
-        this(panel, gameStateManager, 1, false); // mặc định level 1
+        this(panel, gameStateManager, 1, false);
     }
 
     public PlayState(JPanel panel, GameStateManager gameStateManager, int startLevel, boolean singleLevelMode) {
@@ -43,15 +46,16 @@ public class PlayState implements GameState {
         Image gameOverImg = new ImageIcon(getClass().getResource("/image/GameOver.png")).getImage();
         Image winImg = new ImageIcon(getClass().getResource("/image/GameWin.jpg")).getImage();
 
-        gameManager = new GameManager(startLevel,singleLevelMode);
+        gameManager = new GameManager(startLevel, singleLevelMode);
         renderer = new Renderer(bg, gameOverImg, winImg, null);
+
+        settingIcon = new ImageIcon(getClass().getResource("/image/setting_icon.png")).getImage();
+
+        panel.addMouseListener(this);
 
         startTransition(startLevel);
     }
 
-    // -------------------------------
-    // TRANSITION HANDLING
-    // -------------------------------
     private void loadTransitionGif(int level) {
         String path = "/image/LV" + level + ".gif";
         transitionGif = new ImageIcon(getClass().getResource(path)).getImage();
@@ -62,12 +66,9 @@ public class PlayState implements GameState {
         loadTransitionGif(level);
         isTransitioning = true;
         transitionStartTime = System.currentTimeMillis();
-        renderer.restartTransition(); // ✅ reset frame đầu của GIF
+        renderer.restartTransition();
     }
 
-    // -------------------------------
-    // MAIN LOOP
-    // -------------------------------
     @Override
     public void update() {
         if (isGameOver || isGameWin) return;
@@ -99,7 +100,6 @@ public class PlayState implements GameState {
 
         if (gameManager.isLevelComplete()) {
             if (gameManager.isSingleLevelMode()) {
-                // chỉ chơi 1 màn → thắng luôn
                 isGameWin = true;
                 HighScoreManager.checkNewScore(gameManager.getScore());
             } else {
@@ -111,30 +111,24 @@ public class PlayState implements GameState {
                     HighScoreManager.checkNewScore(gameManager.getScore());
                 }
             }
-            return;
         }
-
     }
 
-    // -------------------------------
-    // RENDERING
-    // -------------------------------
     @Override
     public void draw(Graphics g) {
         renderer.render(g, gameManager, isGameOver, isGameWin, isTransitioning);
+
+        if (!isTransitioning && !isGameOver && !isGameWin) {
+            g.drawImage(settingIcon, settingButton.x, settingButton.y, settingButton.width, settingButton.height, null);
+        }
     }
 
-    // -------------------------------
-    // INPUT
-    // -------------------------------
     @Override
     public void keyPressed(int keyCode) {
         if ((isGameOver || isGameWin) && keyCode == KeyEvent.VK_ENTER) {
             if (gameManager.isSingleLevelMode()) {
-                // Quay lại chọn map
                 gameStateManager.setState(new SelectMapState(panel, gameStateManager));
             } else {
-                // Quay về bảng điểm
                 gameStateManager.setState(new HighScoreState(panel, gameStateManager));
             }
             return;
@@ -149,19 +143,28 @@ public class PlayState implements GameState {
         gameManager.handleKeyReleased(keyCode);
     }
 
-    // -------------------------------
-    // UTILITY
-    // -------------------------------
-    private void restart() {
-        gameManager.restartGame();
-        isGameOver = false;
-        isGameWin = false;
-        gameStarted = false;
-        startTransition(startLevel);
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if (!isTransitioning && !isGameOver && !isGameWin) {
+            if (settingButton.contains(e.getPoint())) {
+                gameStateManager.push(new SettingState(gameStateManager, panel, this));
+            }
+        }
     }
 
-    public void setTransitionGif(Image img) {
-        this.transitionGif = img;
-        renderer.setTransitionGif(img);
+    @Override
+    public void mousePressed(MouseEvent e) {}
+
+    @Override
+    public void mouseReleased(MouseEvent e) {}
+
+    @Override
+    public void mouseEntered(MouseEvent e) {}
+
+    @Override
+    public void mouseExited(MouseEvent e) {}
+
+    public void cleanup() {
+        panel.removeMouseListener(this);
     }
 }

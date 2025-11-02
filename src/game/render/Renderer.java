@@ -57,7 +57,7 @@ public class Renderer {
         g2d.setFont(new Font("Arial", Font.BOLD, 24));
         g2d.setColor(Color.WHITE);
         g2d.drawString("Lives: " + gm.getLives(), 20, 40);
-        g2d.drawString("Score: " + gm.getScore(), GameJframe.SCREEN_WIDTH - 150, 40);
+        g2d.drawString("Score: " + gm.getScore(), GameJframe.SCREEN_WIDTH - 980, 65);
 
         // Hiển thị các trạng thái kết thúc
         if (isGameOver) {
