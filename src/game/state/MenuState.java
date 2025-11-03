@@ -1,7 +1,7 @@
 package game.state;
 
 import game.manager.GameStateManager;
-import game.sound.Sound;
+import game.sound.SoundManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,6 +17,7 @@ public class MenuState implements GameState, MouseListener, MouseMotionListener 
     private Rectangle[] optionBounds;
     private int currentChoice = -1;
     private int clickedChoice = -1;
+
 
     private Image backGroundMenu;
     private Image newGameBig;
@@ -109,7 +110,6 @@ public class MenuState implements GameState, MouseListener, MouseMotionListener 
                 panel.removeMouseListener(this);
                 panel.removeMouseMotionListener(this);
                 gameStateManager.setState(new PlayState(panel,gameStateManager));
-                Sound.playSound("bgm.wav", true);
                 break;
             case 1:
                 panel.removeMouseListener(this);

@@ -4,17 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2029db41-e102-4583-9589-5037f3133d39" name="Changes" comment="up lại ảnh">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_1_2025_6_54_PM_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_1_2025_6_54_PM__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game/state/SettingState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/image/setting_icon.png" afterDir="false" />
+    <list default="true" id="2029db41-e102-4583-9589-5037f3133d39" name="Changes" comment="1">
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_11_2025_12_16_am_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_11_2025_12_16_am__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/manager/SoundManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/object/ToughBrick.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/image/ToughBrick.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/image/ToughBrick_Cracked.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/render/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/render/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/highscore.dat" beforeDir="false" afterPath="$PROJECT_DIR$/highscore.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileDesignMap/MapLv1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileDesignMap/MapLv1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Map/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Map/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/manager/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/manager/GameManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/sound/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/sound/Sound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/state/MenuState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/state/MenuState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/state/PlayState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/state/PlayState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/state/SelectMapState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/state/SelectMapState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/SettingMenu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/state/SettingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/state/SettingState.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,20 +36,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="HARD" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;duong26112&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/QuanBaoDuong/BaitapOOP.git&quot;,
-    &quot;accountId&quot;: &quot;7af366ea-0f13-4259-bc30-53ba6d12eff5&quot;
-  }
-}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 8
@@ -66,7 +59,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Merging master"
+    "git-widget-placeholder": "Merging master",
+    "last_opened_file_path": "C:/Users/Admin/IdeaProjects/untitled2/BaitapOOP/src/image"
   }
 }]]></component>
   <component name="RunManager">

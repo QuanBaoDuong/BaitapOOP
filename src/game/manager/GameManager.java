@@ -2,8 +2,11 @@ package game.manager;
 
 import game.main.GameJframe;
 import game.map.Map;
-import game.object.*;
-import game.sound.Sound;
+import game.object.Ball;
+import game.object.Brick;
+import game.object.Paddle;
+import game.object.PowerUp;
+import game.sound.SoundManager;
 
 import java.awt.*;
 import java.io.InputStream;
@@ -16,6 +19,8 @@ public class GameManager {
     private Paddle paddle;
     private List<Brick> bricks;
     private final List<PowerUp> powerUps;
+
+    private SoundManager soundManager;
 
     private int lives = 3;
     private int score;
@@ -31,11 +36,12 @@ public class GameManager {
         restartGame();
     }
 
-    public GameManager(int startLevel, boolean singleLevelMode) {
+    public GameManager(int startLevel, boolean singleLevelMode,SoundManager soundManager) {
         powerUps = new ArrayList<>();
         this.currentLevel = startLevel;
         this.isSingleLevelMode = singleLevelMode;
         loadLevel(currentLevel);
+        this.soundManager = soundManager;
     }
 
     // -------------------------------
@@ -114,11 +120,21 @@ public class GameManager {
             lives--;
             if (lives <= 0) {
                 outOfLives = true;
-                Sound.playSound("gameover.wav", false);
+
             } else {
+                resetPaddle();
                 resetBallPosition();
             }
         }
+    }
+    private void resetPaddle() {
+        paddle.setX((GameJframe.SCREEN_WIDTH / 2) - paddle.getWidth() / 2);
+        paddle.setY(700);
+        paddle.setWidth(150);
+        paddle.setHeight(30);
+        paddle.setSpeed(16);
+        paddle.setMoveLeft(false);
+        paddle.setMoveRight(false);
     }
 
     private void resetBallPosition() {
@@ -157,7 +173,7 @@ public class GameManager {
             ball.setX((int) (ball.getX() + ball.getDirectionX() * 2));
             ball.setY((int) (ball.getY() + ball.getDirectionY() * 2));
 
-            Sound.playSound("break.wav", false);
+            soundManager.playEffect("break.wav");
 
             if (nearest.isDestroyed()) {
                 score += 100;
@@ -175,7 +191,7 @@ public class GameManager {
 
             if (p.getBounds().intersects(paddle.getBounds())) {
                 p.activate(this, paddle, ball);
-                Sound.playSound("powerup.wav", false);
+                soundManager.playEffect("powerup.wav");
                 it.remove();
             } else if (p.getY() > GameJframe.SCREEN_HEIGHT) {
                 it.remove();

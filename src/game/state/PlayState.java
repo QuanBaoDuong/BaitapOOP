@@ -4,6 +4,7 @@ import game.manager.GameManager;
 import game.manager.GameStateManager;
 import game.manager.HighScoreManager;
 import game.render.Renderer;
+import game.sound.SoundManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,6 +17,7 @@ public class PlayState implements GameState, MouseListener {
     private final Renderer renderer;
     private final JPanel panel;
     private final GameStateManager gameStateManager;
+
 
     private boolean isTransitioning = false;
     private long transitionStartTime;
@@ -32,6 +34,8 @@ public class PlayState implements GameState, MouseListener {
     private final Rectangle settingButton = new Rectangle(920, 2, 80, 80);
     private Image settingIcon;
 
+    private final SoundManager soundManager;
+
     public PlayState(JPanel panel, GameStateManager gameStateManager) {
         this(panel, gameStateManager, 1, false);
     }
@@ -41,15 +45,18 @@ public class PlayState implements GameState, MouseListener {
         this.gameStateManager = gameStateManager;
         this.startLevel = startLevel;
         this.singleLevelMode = singleLevelMode;
+        this.soundManager = new SoundManager();
 
         Image bg = new ImageIcon(getClass().getResource("/image/BackGroundgame.png")).getImage();
         Image gameOverImg = new ImageIcon(getClass().getResource("/image/GameOver.png")).getImage();
         Image winImg = new ImageIcon(getClass().getResource("/image/GameWin.jpg")).getImage();
 
-        gameManager = new GameManager(startLevel, singleLevelMode);
+        gameManager = new GameManager(startLevel, singleLevelMode,soundManager);
         renderer = new Renderer(bg, gameOverImg, winImg, null);
 
         settingIcon = new ImageIcon(getClass().getResource("/image/setting_icon.png")).getImage();
+
+        soundManager.playBackground("bgm.wav",true);
 
         panel.addMouseListener(this);
 
@@ -127,8 +134,10 @@ public class PlayState implements GameState, MouseListener {
     public void keyPressed(int keyCode) {
         if ((isGameOver || isGameWin) && keyCode == KeyEvent.VK_ENTER) {
             if (gameManager.isSingleLevelMode()) {
+                cleanup();
                 gameStateManager.setState(new SelectMapState(panel, gameStateManager));
             } else {
+                cleanup();
                 gameStateManager.setState(new HighScoreState(panel, gameStateManager));
             }
             return;
@@ -147,7 +156,7 @@ public class PlayState implements GameState, MouseListener {
     public void mouseClicked(MouseEvent e) {
         if (!isTransitioning && !isGameOver && !isGameWin) {
             if (settingButton.contains(e.getPoint())) {
-                gameStateManager.push(new SettingState(gameStateManager, panel, this));
+                gameStateManager.push(new SettingState(gameStateManager, panel, this,soundManager));
             }
         }
     }
@@ -165,6 +174,7 @@ public class PlayState implements GameState, MouseListener {
     public void mouseExited(MouseEvent e) {}
 
     public void cleanup() {
+        soundManager.stopBackground();
         panel.removeMouseListener(this);
     }
 }

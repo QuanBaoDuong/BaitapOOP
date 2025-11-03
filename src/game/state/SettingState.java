@@ -1,7 +1,7 @@
 package game.state;
 
 import game.manager.GameStateManager;
-import game.sound.Sound;
+import game.sound.SoundManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +19,7 @@ public class SettingState implements GameState, MouseListener, MouseMotionListen
     private int hoveredButton = -1;
     private int clickedButton = -1;
 
+    private final SoundManager soundManager;
     private boolean soundEnabled;
 
     private static final Color BACKGROUND_COLOR = new Color(0, 0, 0, 180);
@@ -28,10 +29,11 @@ public class SettingState implements GameState, MouseListener, MouseMotionListen
     private static final Font BUTTON_FONT = new Font("Arial", Font.BOLD, 24);
     private static final Font TITLE_FONT = new Font("Arial", Font.BOLD, 36);
 
-    public SettingState(GameStateManager gsm, JPanel panel, GameState previousState) {
+    public SettingState(GameStateManager gsm, JPanel panel, GameState previousState, SoundManager soundManager) {
         this.gsm = gsm;
         this.panel = panel;
         this.previousState = previousState;
+        this.soundManager = soundManager;
 
         buttons = new Rectangle[4];
         int buttonWidth = 250;
@@ -44,7 +46,7 @@ public class SettingState implements GameState, MouseListener, MouseMotionListen
             buttons[i] = new Rectangle(startX, startY + i * gap, buttonWidth, buttonHeight);
         }
 
-        soundEnabled = Sound.isSoundEnabled();
+        soundEnabled = soundManager.isSoundEnabled();
         buttonTexts[2] = "SOUND: " + (soundEnabled ? "ON" : "OFF");
 
         panel.addMouseListener(this);
@@ -114,20 +116,22 @@ public class SettingState implements GameState, MouseListener, MouseMotionListen
     private void handleButtonClick(int buttonIndex) {
         switch (buttonIndex) {
             case 0: // NEW GAME
+                soundManager.stopAll();
                 cleanup();
                 gsm.setState(new PlayState(panel, gsm));
                 break;
 
             case 1: // QUIT
+                soundManager.stopAll();
                 cleanup();
                 gsm.setState(new MenuState(panel, gsm));
                 break;
 
             case 2: // SOUND
                 soundEnabled = !soundEnabled;
-                Sound.setSoundEnabled(soundEnabled);
+                soundManager.setSoundEnabled(soundEnabled);
                 if (soundEnabled) {
-                    Sound.playSound("bgm.wav", true);
+                    soundManager.playBackground("bgm.wav", true);
                 }
                 buttonTexts[2] = "SOUND: " + (soundEnabled ? "ON" : "OFF");
                 panel.repaint();
