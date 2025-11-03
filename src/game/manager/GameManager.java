@@ -25,7 +25,7 @@ public class GameManager {
     private int lives = 3;
     private int score;
     private int currentLevel;
-    private final int maxLevel = 5; // ✅ số map tối đa
+    private final int maxLevel = 1; // ✅ số map tối đa
 
     private boolean levelComplete;
     private boolean outOfLives;

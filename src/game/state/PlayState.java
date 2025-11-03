@@ -102,6 +102,7 @@ public class PlayState implements GameState, MouseListener {
         if (gameManager.isOutOfLives()) {
             isGameOver = true;
             HighScoreManager.checkNewScore(gameManager.getScore());
+            soundManager.playEffect("gameover.wav");
             return;
         }
 
@@ -109,6 +110,7 @@ public class PlayState implements GameState, MouseListener {
             if (gameManager.isSingleLevelMode()) {
                 isGameWin = true;
                 HighScoreManager.checkNewScore(gameManager.getScore());
+                soundManager.playEffect("wingame.wav");
             } else {
                 int next = gameManager.getCurrentLevel() + 1;
                 if (next <= gameManager.getMaxLevel()) {
@@ -116,6 +118,7 @@ public class PlayState implements GameState, MouseListener {
                 } else {
                     isGameWin = true;
                     HighScoreManager.checkNewScore(gameManager.getScore());
+                    soundManager.playEffect("wingame.wav");
                 }
             }
         }
@@ -137,8 +140,11 @@ public class PlayState implements GameState, MouseListener {
                 cleanup();
                 gameStateManager.setState(new SelectMapState(panel, gameStateManager));
             } else {
-                cleanup();
-                gameStateManager.setState(new HighScoreState(panel, gameStateManager));
+                isGameOver = false;
+                gameStarted = false;
+                gameManager.restartGame();
+                startTransition(1);
+                return;
             }
             return;
         }
