@@ -1,4 +1,4 @@
-package game.main;
+package game.java.main;
 
 import game.manager.GameStateManager;
 import game.state.MenuState;
@@ -19,7 +19,7 @@ public class GameJpanel extends JPanel implements KeyListener {
 
         // Khởi tạo game.manager.GameStateManager và menu ban đầu
         gsm = new GameStateManager();
-        gsm.setState(new MenuState(this, gsm)); // game.state.MenuState xử lý chuột riêng
+        gsm.setState(new MenuState(this, gsm));
 
         addKeyListener(this);
 
@@ -33,6 +33,7 @@ public class GameJpanel extends JPanel implements KeyListener {
 
     @Override
     public Dimension getPreferredSize() {
+         /*Thiết lập lích thước jpanel theo kích thước màn hinhg game*/
         return new Dimension(GameJframe.SCREEN_WIDTH, GameJframe.SCREEN_HEIGHT);
     }
 
@@ -42,7 +43,7 @@ public class GameJpanel extends JPanel implements KeyListener {
         if (gsm != null) gsm.draw(g); // vẽ state hiện tại
     }
 
-    // === KeyListener ===
+    // KeyListener
     @Override
     public void keyPressed(KeyEvent e) {
         if (gsm != null) gsm.keyPressed(e.getKeyCode());

@@ -1,6 +1,6 @@
 package game.object;
 
-import game.main.GameJframe;
+import game.java.main.GameJframe;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +19,7 @@ public class Ball extends MovableObject {
         this.speed = speed;
 
         try {
-            Image original = new ImageIcon(getClass().getResource("/image/ball.png")).getImage();
+            Image original = new ImageIcon(getClass().getResource("/game/resources/image/ball.png")).getImage();
             Ball_image = original.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         } catch (Exception e) {
             Ball_image = null;

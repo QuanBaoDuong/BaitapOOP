@@ -22,7 +22,7 @@ public class GuideState implements GameState, MouseListener {
         this.gsm = gsm;
         this.panel = panel;
         this.guideImage = new ImageIcon(
-                getClass().getResource("/image/GuideScreen.png")
+                getClass().getResource("/game/resources/image/GuideScreen.png")
         ).getImage();
 
         panel.addMouseListener(this);

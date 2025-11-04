@@ -6,9 +6,63 @@
   <component name="ChangeListManager">
     <list default="true" id="2029db41-e102-4583-9589-5037f3133d39" name="Changes" comment="1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FileDesignMap/MapLv1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileDesignMap/MapLv1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/manager/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/manager/GameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/state/PlayState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/state/PlayState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileDesignMap/MapLv1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileDesignMap/MapLv2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileDesignMap/MapLv3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileDesignMap/MapLv4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileDesignMap/MapLv5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Map/Map.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/main/GameJframe.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/main/GameJpanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/manager/GameManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/manager/GameStateManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/manager/HighScoreManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/manager/SoundManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/object/Ball.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/object/Brick.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/object/GameObject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/object/MovableObject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/object/NormalBrick.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/object/Paddle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/object/PowerUp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/object/ToughBrick.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/object/UnbreakableBrick.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/render/Renderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/state/GameState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/state/GuideState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/state/HighScoreState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/state/MenuState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/state/PlayState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/state/SelectMapState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/state/SettingState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/BackGround.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/BackGround_selectMap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/BackGroundgame.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/ExitGame.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/GameOver.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/GameWin.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/GuideGame.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/GuideScreen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/High Scores.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/LV2.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/LV3.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/LV4.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/LV5.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/Lv1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/NewGame.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/NormalBrick_Yellow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/SelectMap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/ToughBrick.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/ToughBrick_Cracked.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/UnbreakableBrick.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/ball.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/paddle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/setting_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sound/bgm.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sound/break.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sound/gameover.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sound/powerup.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sound/wingame.wav" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +98,7 @@
   "keyToString": {
     "Application.GameJframe.executor": "Run",
     "Application.Unnamed.executor": "Run",
+    "Application.game.java.main.GameJframe.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -51,13 +106,21 @@
     "last_opened_file_path": "C:/Users/Admin/IdeaProjects/untitled2/BaitapOOP/src/image"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.game.java.main.GameJframe">
     <configuration name="GameJframe" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="game.main.GameJframe" />
       <module name="oop" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <method v="2" />
+    </configuration>
+    <configuration name="game.java.main.GameJframe" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="game.java.main.GameJframe" />
+      <module name="oop" />
+      <method v="2" />
     </configuration>
   </component>
   <component name="TaskManager">

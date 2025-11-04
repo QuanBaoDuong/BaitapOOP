@@ -1,6 +1,6 @@
 package game.render;
 
-import game.main.GameJframe;
+import game.java.main.GameJframe;
 import game.manager.GameManager;
 import game.object.Brick;
 import game.object.PowerUp;

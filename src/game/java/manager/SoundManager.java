@@ -29,7 +29,7 @@ public class SoundManager {
         stopBackground();
 
         try {
-            URL url = getClass().getResource("/sound/" + fileName);
+            URL url = getClass().getResource("/game/resources/sound/" + fileName);
             if (url == null) {
                 System.out.println(" Không tìm thấy file âm thanh: " + fileName);
                 return;
@@ -62,7 +62,7 @@ public class SoundManager {
         if (!soundEnabled) return;
 
         try {
-            URL url = getClass().getResource("/sound/" + fileName);
+            URL url = getClass().getResource("/game/resources/sound/" + fileName);
             if (url == null) {
                 System.out.println(" Không tìm thấy file âm thanh: " + fileName);
                 return;

@@ -47,14 +47,14 @@ public class PlayState implements GameState, MouseListener {
         this.singleLevelMode = singleLevelMode;
         this.soundManager = new SoundManager();
 
-        Image bg = new ImageIcon(getClass().getResource("/image/BackGroundgame.png")).getImage();
-        Image gameOverImg = new ImageIcon(getClass().getResource("/image/GameOver.png")).getImage();
-        Image winImg = new ImageIcon(getClass().getResource("/image/GameWin.jpg")).getImage();
+        Image bg = new ImageIcon(getClass().getResource("/game/resources/image/BackGroundgame.png")).getImage();
+        Image gameOverImg = new ImageIcon(getClass().getResource("/game/resources/image/GameOver.png")).getImage();
+        Image winImg = new ImageIcon(getClass().getResource("/game/resources/image/GameWin.jpg")).getImage();
 
         gameManager = new GameManager(startLevel, singleLevelMode,soundManager);
         renderer = new Renderer(bg, gameOverImg, winImg, null);
 
-        settingIcon = new ImageIcon(getClass().getResource("/image/setting_icon.png")).getImage();
+        settingIcon = new ImageIcon(getClass().getResource("/game/resources/image/setting_icon.png")).getImage();
 
         soundManager.playBackground("bgm.wav",true);
 
@@ -64,7 +64,7 @@ public class PlayState implements GameState, MouseListener {
     }
 
     private void loadTransitionGif(int level) {
-        String path = "/image/LV" + level + ".gif";
+        String path = "/game/resources/image/LV" + level + ".gif";
         transitionGif = new ImageIcon(getClass().getResource(path)).getImage();
         renderer.setTransitionGif(transitionGif);
     }
@@ -142,6 +142,7 @@ public class PlayState implements GameState, MouseListener {
             } else {
                 isGameOver = false;
                 gameStarted = false;
+                isGameWin = false;
                 gameManager.restartGame();
                 startTransition(1);
                 return;

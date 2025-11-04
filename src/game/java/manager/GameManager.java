@@ -1,6 +1,6 @@
 package game.manager;
 
-import game.main.GameJframe;
+import game.java.main.GameJframe;
 import game.map.Map;
 import game.object.Ball;
 import game.object.Brick;
@@ -25,10 +25,10 @@ public class GameManager {
     private int lives = 3;
     private int score;
     private int currentLevel;
-    private final int maxLevel = 1; // ✅ số map tối đa
+    private final int maxLevel = 1; // số map tối đa
 
     private boolean levelComplete;
-    private boolean outOfLives;
+    private boolean outOfLives; // kiểm tra hết mạng hay chưa
     private boolean isSingleLevelMode = false;
 
     public GameManager() {
@@ -36,7 +36,8 @@ public class GameManager {
         restartGame();
     }
 
-    public GameManager(int startLevel, boolean singleLevelMode,SoundManager soundManager) {
+    public GameManager(int startLevel, boolean singleLevelMode,
+                       SoundManager soundManager) {
         powerUps = new ArrayList<>();
         this.currentLevel = startLevel;
         this.isSingleLevelMode = singleLevelMode;
@@ -44,9 +45,7 @@ public class GameManager {
         this.soundManager = soundManager;
     }
 
-    // -------------------------------
-    // GAME LIFECYCLE
-    // -------------------------------
+
     public void restartGame() {
         currentLevel = 1;
         score = 0;
@@ -59,7 +58,7 @@ public class GameManager {
 
     public void loadLevel(int level) {
         currentLevel = level;
-        String path = "/FileDesignMap/MapLv" + level + ".txt";
+        String path = "/game/resources/FileDesignMap/MapLv" + level + ".txt";
         InputStream is = getClass().getResourceAsStream(path);
 
         if (is != null) {

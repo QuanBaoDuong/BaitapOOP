@@ -1,7 +1,6 @@
 package game.state;
 
 import game.manager.GameStateManager;
-import game.sound.SoundManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,12 +39,12 @@ public class MenuState implements GameState, MouseListener, MouseMotionListener 
         panel.addMouseListener(this);
         panel.addMouseMotionListener(this);
 
-        backGroundMenu = new ImageIcon(getClass().getResource("/image/BackGround.jpg")).getImage();
-        newGameBig = new ImageIcon(getClass().getResource("/image/NewGame.png")).getImage();
-        guideBig = new ImageIcon(getClass().getResource("/image/GuideGame.png")).getImage();
-        exitGameBig = new ImageIcon(getClass().getResource("/image/ExitGame.png")).getImage();
-        highScoreBig = new ImageIcon(getClass().getResource("/image/High Scores.png")).getImage();
-        selectMapBig = new ImageIcon(getClass().getResource("/image/SelectMap.png")).getImage();
+        backGroundMenu = new ImageIcon(getClass().getResource("/game/resources/image/BackGround.jpg")).getImage();
+        newGameBig = new ImageIcon(getClass().getResource("/game/resources/image/NewGame.png")).getImage();
+        guideBig = new ImageIcon(getClass().getResource("/game/resources/image/GuideGame.png")).getImage();
+        exitGameBig = new ImageIcon(getClass().getResource("/game/resources/image/ExitGame.png")).getImage();
+        highScoreBig = new ImageIcon(getClass().getResource("/game/resources/image/High Scores.png")).getImage();
+        selectMapBig = new ImageIcon(getClass().getResource("/game/resources/image/SelectMap.png")).getImage();
 
         int buttonWidth = 140;
         int buttonHeight = 40;
@@ -109,12 +108,12 @@ public class MenuState implements GameState, MouseListener, MouseMotionListener 
             case 0: // NEW GAME
                 panel.removeMouseListener(this);
                 panel.removeMouseMotionListener(this);
-                gameStateManager.setState(new PlayState(panel,gameStateManager));
+                gameStateManager.setState(new game.state.PlayState(panel,gameStateManager));
                 break;
             case 1:
                 panel.removeMouseListener(this);
                 panel.removeMouseMotionListener(this);
-                gameStateManager.setState(new SelectMapState(panel, gameStateManager));
+                gameStateManager.setState(new game.state.SelectMapState(panel, gameStateManager));
                 break;
             case 2: // HƯỚNG DẪN
                 panel.removeMouseListener(this);

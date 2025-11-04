@@ -29,7 +29,7 @@ public class SelectMapState implements GameState, MouseListener, MouseMotionList
         this.panel = panel;
         this.gameStateManager = gameStateManager;
 
-        background = new ImageIcon(getClass().getResource("/image/BackGround_selectMap.png")).getImage();
+        background = new ImageIcon(getClass().getResource("/game/resources/image/BackGround_selectMap.png")).getImage();
 
         levelButtons = new Rectangle[5];
         for (int i = 0; i < 5; i++) {

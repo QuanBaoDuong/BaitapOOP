@@ -4,10 +4,10 @@ public class ToughBrick extends Brick {
 
     private int hitCount = 0; // số lần bóng đập vào
     private final int hitsToBreak = 2; // cần 2 lần mới vỡ
-    private String crackedImagePath = "/image/ToughBrick_Cracked.png";
+    private String crackedImagePath = "/game/resources/image/ToughBrick_Cracked.png";
 
     public ToughBrick(int x, int y, int width, int height) {
-        super(x, y, width, height, "/image/ToughBrick.png", true);
+        super(x, y, width, height, "/game/resources/image/ToughBrick.png", true);
     }
 
     @Override

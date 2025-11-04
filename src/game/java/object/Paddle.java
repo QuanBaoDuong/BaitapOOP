@@ -1,6 +1,6 @@
 package game.object;
 //
-import game.main.GameJframe;
+import game.java.main.GameJframe;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +15,7 @@ public class Paddle extends MovableObject {
 
         // Thử tải ảnh paddle, nếu không có thì sẽ tô màu xanh dương
         try {
-            Image original = new ImageIcon(getClass().getResource("/image/paddle.png")).getImage();
+            Image original = new ImageIcon(getClass().getResource("/game/resources/image/paddle.png")).getImage();
             paddleImage = original.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         } catch (Exception e) {
             paddleImage = null;
