@@ -158,6 +158,7 @@ public class PlayState implements GameState, MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if (!isTransitioning && !isGameOver && !isGameWin && settingButton.contains(e.getPoint())) {
+            // Truyền 'this' (PlayState) cho SettingState
             gameStateManager.push(new SettingState(gameStateManager, panel, this, soundManager));
         }
     }
@@ -170,6 +171,27 @@ public class PlayState implements GameState, MouseListener {
     public void mouseEntered(MouseEvent e) {}
     @Override
     public void mouseExited(MouseEvent e) {}
+
+    // Phương thức mới: Khởi động lại level hiện tại
+    public void restartCurrentLevel() {
+        // Đặt lại trạng thái game
+        isGameOver = false;
+        isGameWin = false;
+        isTransitioning = false;
+        gameStarted = false;
+
+        // Sử dụng loadLevel() thay vì restartLevel() vì GameManager không có restartLevel()
+        int currentLevel = gameManager.getCurrentLevel();
+        gameManager.loadLevel(currentLevel);
+
+        // Bắt đầu transition cho level hiện tại
+        startTransition(currentLevel);
+    }
+
+    // Phương thức getter để lấy thông tin level hiện tại
+    public int getCurrentLevel() {
+        return gameManager.getCurrentLevel();
+    }
 
     public void cleanup() {
         panel.removeMouseListener(this);
