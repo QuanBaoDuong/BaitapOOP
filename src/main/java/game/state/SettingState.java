@@ -12,10 +12,10 @@ import java.awt.event.MouseMotionListener;
 public class SettingState implements GameState, MouseListener, MouseMotionListener {
     private final GameStateManager gsm;
     private final JPanel panel;
-    private final GameState previousState;
+    private final PlayState playState;
 
     private final Rectangle[] buttons;
-    private final String[] buttonTexts = {"NEW GAME", "QUIT", "SOUND: ON", "CLOSE"};
+    private final String[] buttonTexts = {"NEW LEVEL", "QUIT", "SOUND: ON", "CLOSE"};
     private int hoveredButton = -1;
     private int clickedButton = -1;
 
@@ -29,10 +29,10 @@ public class SettingState implements GameState, MouseListener, MouseMotionListen
     private static final Font BUTTON_FONT = new Font("Arial", Font.BOLD, 24);
     private static final Font TITLE_FONT = new Font("Arial", Font.BOLD, 36);
 
-    public SettingState(GameStateManager gsm, JPanel panel, GameState previousState, SoundManager soundManager) {
+    public SettingState(GameStateManager gsm, JPanel panel, PlayState playState, SoundManager soundManager) {
         this.gsm = gsm;
         this.panel = panel;
-        this.previousState = previousState;
+        this.playState = playState;
         this.soundManager = soundManager;
 
         buttons = new Rectangle[4];
@@ -56,7 +56,7 @@ public class SettingState implements GameState, MouseListener, MouseMotionListen
 
     @Override
     public void draw(Graphics g) {
-        if (previousState != null) previousState.draw(g);
+        if (playState != null) playState.draw(g);
 
         g.setColor(BACKGROUND_COLOR);
         g.fillRect(0,0,1000,800);
@@ -101,26 +101,31 @@ public class SettingState implements GameState, MouseListener, MouseMotionListen
 
     private void handleButtonClick(int idx) {
         switch (idx) {
-            case 0: // NEW GAME
-                soundManager.stopAll();
+            case 0: // NEW LEVEL - Khởi động lại level hiện tại
+                if (playState != null) {
+                    playState.restartCurrentLevel();
+                }
                 cleanup();
-                gsm.setState(new PlayState(panel, gsm));
+                gsm.pop();
                 break;
-            case 1: // QUIT
+
+            case 1: // QUIT - Quay về menu chính
                 soundManager.stopAll();
                 cleanup();
                 gsm.setState(new MenuState(panel, gsm));
                 break;
-            case 2: // SOUND
+
+            case 2: // SOUND - Bật/tắt âm thanh
                 soundEnabled = !soundEnabled;
                 soundManager.setSoundEnabled(soundEnabled);
                 if (soundEnabled) soundManager.playBackground("bgm.wav", true);
                 buttonTexts[2] = "SOUND: " + (soundEnabled ? "ON":"OFF");
                 panel.repaint();
                 break;
-            case 3: // CLOSE
+
+            case 3: // CLOSE - Đóng setting và tiếp tục game
                 cleanup();
-                if (previousState != null) gsm.setState(previousState);
+                gsm.pop();
                 break;
         }
     }
