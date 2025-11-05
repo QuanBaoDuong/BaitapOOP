@@ -33,6 +33,9 @@ public class PlayState implements GameState, MouseListener {
     private final Rectangle settingButton = new Rectangle(920, 2, 80, 80);
     private Image settingIcon;
 
+    // Thêm biến để lưu số mạng khi bắt đầu level
+    private int livesAtLevelStart = 3;
+
     public PlayState(JPanel panel, GameStateManager gsm) {
         this(panel, gsm, 1, false);
     }
@@ -53,6 +56,9 @@ public class PlayState implements GameState, MouseListener {
 
         settingIcon = new ImageIcon(getClass().getResource("/image/setting_icon.png")).getImage();
 
+        // Lưu số mạng khi bắt đầu level
+        livesAtLevelStart = gameManager.getLives();
+
         // Phát nhạc nền nếu chưa chạy
         soundManager.playBackground("bgm.wav", true);
 
@@ -71,6 +77,9 @@ public class PlayState implements GameState, MouseListener {
         isTransitioning = true;
         transitionStartTime = System.currentTimeMillis();
         renderer.restartTransition();
+
+        // Cập nhật số mạng khi bắt đầu level mới
+        livesAtLevelStart = gameManager.getLives();
     }
 
     @Override
@@ -85,6 +94,8 @@ public class PlayState implements GameState, MouseListener {
                     gameStarted = true;
                 } else {
                     if (gameManager.getCurrentLevel() < gameManager.getMaxLevel()) {
+                        // Cập nhật số mạng khi chuyển level thành công
+                        livesAtLevelStart = gameManager.getLives();
                         gameManager.nextLevel();
                     } else {
                         isGameWin = true;
@@ -111,6 +122,8 @@ public class PlayState implements GameState, MouseListener {
             } else {
                 int next = gameManager.getCurrentLevel() + 1;
                 if (next <= gameManager.getMaxLevel()) {
+                    // Cập nhật số mạng khi hoàn thành level
+                    livesAtLevelStart = gameManager.getLives();
                     startTransition(next);
                 } else {
                     isGameWin = true;
@@ -141,6 +154,7 @@ public class PlayState implements GameState, MouseListener {
                 gameStarted = false;
                 isGameWin = false;
                 gameManager.restartGame();
+                livesAtLevelStart = 3; // Reset về 3 mạng khi restart game
                 startTransition(1);
                 return;
             }
@@ -172,7 +186,7 @@ public class PlayState implements GameState, MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {}
 
-    // Phương thức mới: Khởi động lại level hiện tại
+    // Phương thức mới: Khởi động lại level hiện tại với số mạng từ đầu level
     public void restartCurrentLevel() {
         // Đặt lại trạng thái game
         isGameOver = false;
@@ -180,9 +194,12 @@ public class PlayState implements GameState, MouseListener {
         isTransitioning = false;
         gameStarted = false;
 
-        // Sử dụng loadLevel() thay vì restartLevel() vì GameManager không có restartLevel()
+        // Khởi động lại level hiện tại
         int currentLevel = gameManager.getCurrentLevel();
         gameManager.loadLevel(currentLevel);
+
+        // Khôi phục số mạng từ đầu level (không phải số mạng hiện tại)
+        gameManager.setLives(livesAtLevelStart);
 
         // Bắt đầu transition cho level hiện tại
         startTransition(currentLevel);

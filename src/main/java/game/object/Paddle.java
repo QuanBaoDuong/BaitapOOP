@@ -1,7 +1,6 @@
 package game.object;
-//
-import game.java.main.GameJframe;
 
+import game.java.main.GameJframe;
 import javax.swing.*;
 import java.awt.*;
 
@@ -19,7 +18,7 @@ public class Paddle extends MovableObject {
             paddleImage = original.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         } catch (Exception e) {
             paddleImage = null;
-            System.out.println(" Không tìm thấy ảnh paddle, dùng màu xanh dương thay thế.");
+            System.out.println("Không tìm thấy ảnh paddle, dùng màu xanh dương thay thế.");
         }
     }
 
@@ -31,7 +30,7 @@ public class Paddle extends MovableObject {
     @Override
     public void move() {
         if (moveLeft && x > 0) x -= speed;
-        if (moveRight && x < GameJframe.SCREEN_WIDTH - width) x += speed;
+        if (moveRight && x < GameJframe.SCREEN_WIDTH - width-3) x += speed;
     }
 
     @Override
@@ -54,10 +53,9 @@ public class Paddle extends MovableObject {
     }
 
     public void setSpeed(int speed) {
-        if(speed>=30){
-            this.speed=30;
-        }
-        else {
+        if (speed >= 30) {
+            this.speed = 30;
+        } else {
             this.speed = speed;
         }
     }
@@ -73,9 +71,11 @@ public class Paddle extends MovableObject {
     public int getHeight() {
         return height;
     }
+
     public int getSpeed() {
         return speed;
     }
+
     public void setWidth(int width) {
         this.width = width;
     }
