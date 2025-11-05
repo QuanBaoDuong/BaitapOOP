@@ -2,6 +2,7 @@ package game.render;
 
 import game.java.main.GameJframe;
 import game.manager.GameManager;
+import game.object.Ball;
 import game.object.Brick;
 import game.object.PowerUp;
 
@@ -42,7 +43,9 @@ public class Renderer {
         g2d.drawImage(backgroundImage, 0, 0, GameJframe.SCREEN_WIDTH, GameJframe.SCREEN_HEIGHT, null);
 
         // Vẽ các đối tượng trong game
-        gm.getBall().render(g2d);
+        for (Ball b : gm.getBalls()) {
+            b.render(g2d);
+        }
         gm.getPaddle().render(g2d);
 
         for (Brick brick : gm.getBricks()) {

@@ -1,6 +1,8 @@
 package game.object;
 
 import game.manager.GameManager;
+import game.manager.GameStateManager;
+
 import java.awt.*;
 import java.util.Random;
 
@@ -56,16 +58,17 @@ public abstract class PowerUp extends GameObject {
     public static PowerUp generateFromBrick(Brick brick) {
         Random rand = new Random();
         // 15% tỉ lệ rơi
-        if (rand.nextInt(100) < 15) {
+        if (rand.nextInt(100) < 40) {
             int x = brick.x + brick.width / 2 - 10;
             int y = brick.y + brick.height / 2 - 10;
 
-            switch (rand.nextInt(5)) {
+            switch (rand.nextInt(6)) {
                 case 0: return new ExpandPaddlePowerUp(x, y);
                 case 1: return new ShrinkPaddlePowerUp(x, y);
                 case 2: return new ExtraLifePowerUp(x, y);
                 case 3: return new QuickPaddlePowerUp(x, y);
                 case 4: return new QuickBallPowerUp(x, y);
+                case 5: return new MultiBallPowerUp(x, y);
             }
         }
         return null;
@@ -209,5 +212,57 @@ class QuickBallPowerUp extends PowerUp {
 
     public boolean isActive() {
         return active;
+    }
+}
+
+class MultiBallPowerUp extends PowerUp {
+    private final int extraBalls = 2;
+
+    public MultiBallPowerUp(int x, int y) {
+        super(x,y,20,20,"multiball",0);
+    }
+
+    @Override
+    public void applyEffect(GameManager gm, Paddle paddle, Ball ball) {
+        int currentBallcount = gm.getBalls().size();
+
+        for (int i=0;i<currentBallcount;i++) {
+            Ball orginal = gm.getBalls().get(i);
+
+            for (int j=0;j<extraBalls;j++) {
+                Ball newBall = new Ball(orginal.getX(), orginal.getY(),
+                        orginal.getWidth(), orginal.getHeight(),
+                        orginal.getDirectionX(),orginal.getDirectionY(),
+                        orginal.getSpeed());
+
+                double angle = Math.toRadians(new Random().nextInt(120)-60);
+                double dx = orginal.getDirectionX();
+                double dy = orginal.getDirectionY();
+
+                double minDy = 0.2;
+                double newDx = dx * Math.cos(angle) - dy * Math.sin(angle);
+                double newDy = dx * Math.sin(angle) + dy * Math.cos(angle);
+
+                if (Math.abs(newDy) < minDy) {
+                    newDy = Math.signum(newDy) * minDy; // giữ dấu
+                }
+
+                newBall.setDirectionX(newDx);
+                newBall.setDirectionY(newDy);
+
+                gm.getBalls().add(newBall);
+            }
+        }
+    }
+
+    @Override
+    public void removeEffect(GameManager gm, Paddle paddle, Ball ball) {}
+
+    @Override
+    public void draw(Graphics2D g2d) {
+        g2d.setColor(Color.MAGENTA);
+        g2d.fillOval(x, y, width, height);
+        g2d.setColor(Color.BLACK);
+        g2d.drawString("x2", x + 6, y + 14);
     }
 }

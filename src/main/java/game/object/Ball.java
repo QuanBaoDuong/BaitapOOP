@@ -111,21 +111,11 @@ public class Ball extends MovableObject {
                 if (x < other.x) x -= intersection.width;
                 else x += intersection.width;
                 directionX *= -1;
-            } else if (intersection.width > intersection.height) {
-                if (y < other.y) y -= intersection.height;
-                else y += intersection.height;
-                directionY *= -1;
             } else {
-                // Va góc
-                if (x < other.x) x -= intersection.width;
-                else x += intersection.width;
                 if (y < other.y) y -= intersection.height;
                 else y += intersection.height;
-                directionX *= -1;
                 directionY *= -1;
             }
-
-
         }
     }
     public boolean checkCollision(GameObject other) {

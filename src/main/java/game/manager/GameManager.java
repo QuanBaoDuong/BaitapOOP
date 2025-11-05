@@ -15,7 +15,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class GameManager {
-    private Ball ball;
+    private List<Ball> balls;
     private Paddle paddle;
     private List<Brick> bricks;
     private final List<PowerUp> powerUps;
@@ -25,7 +25,7 @@ public class GameManager {
     private int lives = 3;
     private int score;
     private int currentLevel;
-    private final int maxLevel = 1; // số map tối đa
+    private final int maxLevel = 5; // số map tối đa
 
     private boolean levelComplete;
     private boolean outOfLives; // kiểm tra hết mạng hay chưa
@@ -89,13 +89,16 @@ public class GameManager {
                 (GameJframe.SCREEN_WIDTH / 2) - 75,
                 700, 150, 30
         );
-        ball = new Ball(
+        balls = new ArrayList<>();
+
+        Ball ballMain = new Ball(
                 paddle.getX() + paddle.getWidth() / 2 - 15,
                 paddle.getY() - 30,
                 30, 30,
                 1 / Math.sqrt(2), 1 / Math.sqrt(2),
-                8
+                12
         );
+        balls.add(ballMain);
     }
 
     // -------------------------------
@@ -104,7 +107,7 @@ public class GameManager {
     public void update() {
         if (outOfLives || levelComplete) return;
 
-        ball.update();
+        for (Ball ball : balls) ball.update();
         paddle.update();
 
         checkBallOutOfBounds();
@@ -115,14 +118,20 @@ public class GameManager {
     }
 
     private void checkBallOutOfBounds() {
-        if (ball.getY() > GameJframe.SCREEN_HEIGHT) {
-            lives--;
+        Iterator<Ball> it = balls.iterator();
+        while (it.hasNext()) {
+            Ball ball = it.next();
+            if (ball.getY() > GameJframe.SCREEN_HEIGHT) {
+                it.remove();
+            }
+        }
+        if (balls.isEmpty()) {
+            lives --;
             if (lives <= 0) {
                 outOfLives = true;
-
-            } else {
+            }else {
                 resetPaddle();
-                resetBallPosition();
+                resetPositions();
             }
         }
     }
@@ -136,50 +145,47 @@ public class GameManager {
         paddle.setMoveRight(false);
     }
 
-    private void resetBallPosition() {
-        ball.setX(paddle.getX() + paddle.getWidth() / 2 - ball.getWidth() / 2);
-        ball.setY(paddle.getY() - ball.getHeight());
-        ball.setSpeed(8);
-        ball.setDirectionX(1);
-        ball.setDirectionY(1);
-    }
-
     private void checkPaddleCollision() {
-        if (ball.checkCollision(paddle)) {
-            ball.bounceOff(paddle);
+        for (Ball ball : balls) {
+            if (ball.checkCollision(paddle)) {
+                ball.bounceOff(paddle);
+            }
         }
     }
 
     private void checkBrickCollisions() {
-        Brick nearest = null;
-        int maxArea = -1;
+        for (Ball ball : balls) {
+            Brick nearest = null;
+            int maxArea = -1;
 
-        for (Brick b : bricks) {
-            if (!b.isDestroyed() && ball.checkCollision(b)) {
-                Rectangle inter = ball.getBounds().intersection(b.getBounds());
-                int area = inter.width * inter.height;
-                if (area > maxArea) {
-                    maxArea = area;
-                    nearest = b;
+            for (Brick b : bricks) {
+                if (!b.isDestroyed() && ball.checkCollision(b)) {
+                    Rectangle inter = ball.getBounds().intersection(b.getBounds());
+                    int area = inter.width * inter.height;
+                    if (area > maxArea) {
+                        maxArea = area;
+                        nearest = b;
+                    }
+                }
+            }
+
+            if (nearest != null) {
+                ball.bounceOff(nearest);
+                nearest.takeHit();
+                ball.setHasBounced(true);
+                ball.setX((int) (ball.getX() + ball.getDirectionX() * 2));
+                ball.setY((int) (ball.getY() + ball.getDirectionY() * 2));
+
+                soundManager.playEffect("break.wav");
+
+                if (nearest.isDestroyed()) {
+                    score += 100;
+                    PowerUp pu = PowerUp.generateFromBrick(nearest);
+                    if (pu != null) powerUps.add(pu);
                 }
             }
         }
 
-        if (nearest != null) {
-            ball.bounceOff(nearest);
-            nearest.takeHit();
-            ball.setHasBounced(true);
-            ball.setX((int) (ball.getX() + ball.getDirectionX() * 2));
-            ball.setY((int) (ball.getY() + ball.getDirectionY() * 2));
-
-            soundManager.playEffect("break.wav");
-
-            if (nearest.isDestroyed()) {
-                score += 100;
-                PowerUp pu = PowerUp.generateFromBrick(nearest);
-                if (pu != null) powerUps.add(pu);
-            }
-        }
     }
 
     private void updatePowerUps() {
@@ -188,11 +194,19 @@ public class GameManager {
             PowerUp p = it.next();
             p.update();
 
-            if (p.getBounds().intersects(paddle.getBounds())) {
-                p.activate(this, paddle, ball);
-                soundManager.playEffect("powerup.wav");
+            boolean activated = false;
+            for (Ball ball : balls) {
+                if (p.getBounds().intersects(paddle.getBounds())) {
+                    activated = true;
+                    p.activate(this, paddle, ball);
+                    break;
+                }
+            }
+
+            if (activated) {
+                if (soundManager != null) soundManager.playEffect("powerup.wav");
                 it.remove();
-            } else if (p.getY() > GameJframe.SCREEN_HEIGHT) {
+            }else if (p.getY() > GameJframe.SCREEN_HEIGHT) {
                 it.remove();
             }
         }
@@ -214,7 +228,7 @@ public class GameManager {
     // -------------------------------
     // GETTERS & SETTERS
     // -------------------------------
-    public Ball getBall() { return ball; }
+    public List<Ball> getBalls() { return balls; }
     public Paddle getPaddle() { return paddle; }
     public List<Brick> getBricks() { return bricks; }
     public List<PowerUp> getPowerUps() { return powerUps; }

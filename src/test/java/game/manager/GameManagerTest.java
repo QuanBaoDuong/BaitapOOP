@@ -24,7 +24,7 @@ class GameManagerTest {
     void setup() {
         gameManager = new GameManager();
         paddle = gameManager.getPaddle();
-        ball = gameManager.getBall();
+        List<Ball> balls = gameManager.getBalls();
     }
 
     @Test
