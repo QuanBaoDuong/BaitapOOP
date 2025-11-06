@@ -142,7 +142,8 @@ class ExtraLifePowerUp extends PowerUp {
 
     @Override
     public void applyEffect(GameManager gm, Paddle paddle, Ball ball) {
-        gm.setLives(gm.getLives() + 1);
+        int newLives = gm.getLives() + 1;
+        gm.setLives(Math.min(newLives, 5)); // Giới hạn tối đa là 5
     }
 
     @Override
