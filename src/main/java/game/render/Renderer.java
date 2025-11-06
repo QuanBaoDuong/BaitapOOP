@@ -21,7 +21,8 @@ public class Renderer {
 
     private boolean showSettingMenu = false;
 
-    public Renderer(Image backgroundImg, Image gameOverImg, Image winImg, Image transitionGif) {
+    public Renderer(Image backgroundImg, Image gameOverImg,
+                    Image winImg, Image transitionGif) {
         this.backgroundImage = backgroundImg;
         this.gameOverImage = gameOverImg;
         this.winImage = winImg;
@@ -29,7 +30,8 @@ public class Renderer {
         setTransitionGif(transitionGif);
     }
 
-    public void render(Graphics g, GameManager gm, boolean isGameOver, boolean isWin, boolean isTransitioning) {
+    public void render(Graphics g, GameManager gm, boolean isGameOver,
+                       boolean isWin, boolean isTransitioning) {
         Graphics2D g2d = (Graphics2D) g;
 
         if (isTransitioning) {
@@ -40,7 +42,8 @@ public class Renderer {
         }
 
         // Vẽ background
-        g2d.drawImage(backgroundImage, 0, 0, GameJframe.SCREEN_WIDTH, GameJframe.SCREEN_HEIGHT, null);
+        g2d.drawImage(backgroundImage, 0, 0, GameJframe.SCREEN_WIDTH,
+                GameJframe.SCREEN_HEIGHT, null);
 
         // Vẽ các đối tượng trong game
         for (Ball b : gm.getBalls()) {
@@ -60,7 +63,8 @@ public class Renderer {
         g2d.setFont(new Font("Arial", Font.BOLD, 24));
         g2d.setColor(Color.WHITE);
         g2d.drawString("Lives: " + gm.getLives(), 20, 40);
-        g2d.drawString("Score: " + gm.getScore(), GameJframe.SCREEN_WIDTH - 980, 65);
+        g2d.drawString("Score: " + gm.getScore(),
+                GameJframe.SCREEN_WIDTH - 980, 65);
 
         // Hiển thị các trạng thái kết thúc
         if (isGameOver) {
@@ -111,7 +115,8 @@ public class Renderer {
     public void restartTransition() {
         if (transitionIcon != null) {
             transitionIcon.getImage().flush();
-            this.transitionGif = new ImageIcon(transitionIcon.getImage()).getImage();
+            this.transitionGif = new ImageIcon(transitionIcon.
+                    getImage()).getImage();
         }
     }
 }

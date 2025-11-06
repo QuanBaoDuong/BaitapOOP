@@ -7,7 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class SelectMapState implements GameState, MouseListener, MouseMotionListener {
+public class SelectMapState implements GameState, MouseListener,
+        MouseMotionListener {
 
     private final GameStateManager gameStateManager;
     private final JPanel panel;
@@ -29,11 +30,13 @@ public class SelectMapState implements GameState, MouseListener, MouseMotionList
         this.panel = panel;
         this.gameStateManager = gameStateManager;
 
-        background = new ImageIcon(getClass().getResource("/image/BackGround_selectMap.png")).getImage();
+        background = new ImageIcon(getClass().
+                getResource("/image/BackGround_selectMap.png")).getImage();
 
         levelButtons = new Rectangle[5];
         for (int i = 0; i < 5; i++) {
-            levelButtons[i] = new Rectangle(startX, startY + i * gap, width, height);
+            levelButtons[i] = new Rectangle(startX, startY +
+                    i * gap, width, height);
         }
 
         buttonBack = new Rectangle(35,25,195,50);
@@ -53,7 +56,8 @@ public class SelectMapState implements GameState, MouseListener, MouseMotionList
 
         if (backClicked) {
             g2.setColor(new Color(255, 255, 150, 60));
-            g2.fillRoundRect(buttonBack.x, buttonBack.y, buttonBack.width, buttonBack.height, 20, 20);
+            g2.fillRoundRect(buttonBack.x, buttonBack.y,
+                    buttonBack.width, buttonBack.height, 20, 20);
         }
 
         for (int i = 0; i < levelButtons.length; i++) {
@@ -91,7 +95,8 @@ public class SelectMapState implements GameState, MouseListener, MouseMotionList
         for (int i = 0; i < levelButtons.length; i++) {
             if (levelButtons[i].contains(p)) {
                 cleanup();
-                gameStateManager.setState(new PlayState(panel, gameStateManager, i + 1, true));
+                gameStateManager.setState(new PlayState(panel,
+                        gameStateManager, i + 1, true));
                 return;
             }
         }
@@ -136,7 +141,8 @@ public class SelectMapState implements GameState, MouseListener, MouseMotionList
     }
 
     @Override public void mouseEntered(MouseEvent e) {}
-    @Override public void mouseExited(MouseEvent e) { hoveredButtonIndex = -1; panel.repaint(); }
+    @Override public void mouseExited(MouseEvent e) { hoveredButtonIndex = -1;
+        panel.repaint(); }
     @Override public void mouseDragged(MouseEvent e) {}
 
     private void cleanup() {

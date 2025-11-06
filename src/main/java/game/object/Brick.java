@@ -10,7 +10,8 @@ public abstract class Brick extends GameObject {
     protected boolean destroyed = false;
     private boolean breakable;
 
-    public Brick(int x, int y, int width, int height, String imagePath, boolean breakable) {
+    public Brick(int x, int y, int width, int height,
+                 String imagePath, boolean breakable) {
         super(x, y, width, height);
         brickImage = new ImageIcon(getClass().getResource(imagePath)).getImage();
         this.breakable=breakable;

@@ -12,7 +12,8 @@ public class MenuState implements GameState, MouseListener, MouseMotionListener 
     private GameStateManager gameStateManager;
     private JPanel panel;
 
-    private String[] options = {"NEW GAME","Select Map", "HƯỚNG DẪN", "HIGH SCORES", "EXIT GAME" };
+    private String[] options = {"NEW GAME","Select Map",
+            "HƯỚNG DẪN", "HIGH SCORES", "EXIT GAME" };
     private Rectangle[] optionBounds;
     private int currentChoice = -1;
     private int clickedChoice = -1;
@@ -39,20 +40,31 @@ public class MenuState implements GameState, MouseListener, MouseMotionListener 
         panel.addMouseListener(this);
         panel.addMouseMotionListener(this);
 
-        backGroundMenu = new ImageIcon(getClass().getResource("/image/BackGround.jpg")).getImage();
-        newGameBig = new ImageIcon(getClass().getResource("/image/NewGame.png")).getImage();
-        guideBig = new ImageIcon(getClass().getResource("/image/GuideGame.png")).getImage();
-        exitGameBig = new ImageIcon(getClass().getResource("/image/ExitGame.png")).getImage();
-        highScoreBig = new ImageIcon(getClass().getResource("/image/High Scores.png")).getImage();
-        selectMapBig = new ImageIcon(getClass().getResource("/image/SelectMap.png")).getImage();
+        backGroundMenu = new ImageIcon(getClass().
+                getResource("/image/BackGround.jpg")).getImage();
+        newGameBig = new ImageIcon(getClass().
+                getResource("/image/NewGame.png")).getImage();
+        guideBig = new ImageIcon(getClass().
+                getResource("/image/GuideGame.png")).getImage();
+        exitGameBig = new ImageIcon(getClass().
+                getResource("/image/ExitGame.png")).getImage();
+        highScoreBig = new ImageIcon(getClass().
+                getResource("/image/High Scores.png")).getImage();
+        selectMapBig = new ImageIcon(getClass().
+                getResource("/image/SelectMap.png")).getImage();
 
         int buttonWidth = 140;
         int buttonHeight = 40;
-        newGame = newGameBig.getScaledInstance(buttonWidth, buttonHeight, Image.SCALE_SMOOTH);
-        guide = guideBig.getScaledInstance(buttonWidth, buttonHeight, Image.SCALE_SMOOTH);
-        exitGame = exitGameBig.getScaledInstance(buttonWidth, buttonHeight, Image.SCALE_SMOOTH);
-        highScore = highScoreBig.getScaledInstance(buttonWidth, buttonHeight, Image.SCALE_SMOOTH);
-        selectMap = selectMapBig.getScaledInstance(buttonWidth, buttonHeight, Image.SCALE_SMOOTH);
+        newGame = newGameBig.getScaledInstance(buttonWidth,
+                buttonHeight, Image.SCALE_SMOOTH);
+        guide = guideBig.getScaledInstance(buttonWidth,
+                buttonHeight, Image.SCALE_SMOOTH);
+        exitGame = exitGameBig.getScaledInstance(buttonWidth,
+                buttonHeight, Image.SCALE_SMOOTH);
+        highScore = highScoreBig.getScaledInstance(buttonWidth,
+                buttonHeight, Image.SCALE_SMOOTH);
+        selectMap = selectMapBig.getScaledInstance(buttonWidth,
+                buttonHeight, Image.SCALE_SMOOTH);
 
         // tạo mảng bounds (4 phần tử)
         optionBounds = new Rectangle[options.length];
@@ -60,11 +72,11 @@ public class MenuState implements GameState, MouseListener, MouseMotionListener 
         // xác định vị trí nút
         int x = 440;
         int y = 300;
-        optionBounds[0] = new Rectangle(x, y, buttonWidth, buttonHeight);           // NEW GAME
-        optionBounds[1] = new Rectangle(x, y + 60, buttonWidth, buttonHeight);      // HƯỚNG DẪN
-        optionBounds[2] = new Rectangle(x, y + 120, buttonWidth, buttonHeight);     // HIGH SCORES
-        optionBounds[3] = new Rectangle(x, y + 180, buttonWidth, buttonHeight);     // EXIT GAME
-        optionBounds[4] = new Rectangle(x, y + 240, buttonWidth, buttonHeight);     // CHỌN MAP
+        optionBounds[0] = new Rectangle(x, y, buttonWidth, buttonHeight);
+        optionBounds[1] = new Rectangle(x, y + 60, buttonWidth, buttonHeight);
+        optionBounds[2] = new Rectangle(x, y + 120, buttonWidth, buttonHeight);
+        optionBounds[3] = new Rectangle(x, y + 180, buttonWidth, buttonHeight);
+        optionBounds[4] = new Rectangle(x, y + 240, buttonWidth, buttonHeight);
 
     }
 
@@ -108,22 +120,26 @@ public class MenuState implements GameState, MouseListener, MouseMotionListener 
             case 0: // NEW GAME
                 panel.removeMouseListener(this);
                 panel.removeMouseMotionListener(this);
-                gameStateManager.setState(new game.state.PlayState(panel,gameStateManager));
+                gameStateManager.setState(new PlayState(panel,
+                        gameStateManager));
                 break;
             case 1:
                 panel.removeMouseListener(this);
                 panel.removeMouseMotionListener(this);
-                gameStateManager.setState(new game.state.SelectMapState(panel, gameStateManager));
+                gameStateManager.setState(new SelectMapState(panel,
+                        gameStateManager));
                 break;
             case 2: // HƯỚNG DẪN
                 panel.removeMouseListener(this);
                 panel.removeMouseMotionListener(this);
-                gameStateManager.setState(new GuideState(gameStateManager, panel));
+                gameStateManager.setState(new GuideState(gameStateManager,
+                        panel));
                 break;
             case 3: // HIGH SCORES
                 panel.removeMouseListener(this);
                 panel.removeMouseMotionListener(this);
-                gameStateManager.setState(new HighScoreState(panel, gameStateManager));
+                gameStateManager.setState(new HighScoreState(panel,
+                        gameStateManager));
                 break;
             case 4: // EXIT GAME
                 panel.removeMouseListener(this);

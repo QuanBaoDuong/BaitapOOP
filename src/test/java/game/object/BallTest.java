@@ -27,8 +27,8 @@ public class BallTest {
 
         ball.move();
 
-        assertNotEquals(oldX, ball.getX(), "Ball phải di chuyển chiều ngang");
-        assertNotEquals(oldY, ball.getY(), "Ball phải di chuyển chiều dọc");
+        assertNotEquals(oldX, ball.getX(), "Ball phải di chuyển chiều ngang ");
+        assertNotEquals(oldY, ball.getY(), "Ball phải di chuyển chiều dọc ");
     }
 
     @Test

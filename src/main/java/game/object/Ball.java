@@ -12,15 +12,18 @@ public class Ball extends MovableObject {
     private int speed;
     private Image Ball_image;
 
-    public Ball(int x, int y, int width, int height, double directionX, double directionY, int speed) {
+    public Ball(int x, int y, int width, int height,
+                double directionX, double directionY, int speed) {
         super(x, y, width, height, 0, 0);
         this.directionX = directionX;
         this.directionY = directionY;
         this.speed = speed;
 
         try {
-            Image original = new ImageIcon(getClass().getResource("/image/ball.png")).getImage();
-            Ball_image = original.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+            Image original = new ImageIcon(getClass().getResource(
+                    "/image/ball.png")).getImage();
+            Ball_image = original.getScaledInstance(width, height,
+                    Image.SCALE_SMOOTH);
         } catch (Exception e) {
             Ball_image = null;
         }
@@ -42,9 +45,6 @@ public class Ball extends MovableObject {
             y = 0;
             directionY*=-1;
         }
-           /* if(y+height>=game.main.GameJframe.SCREEN_HEIGHT) {
-                directionY*=-1;
-            }*/
 
     }
 
@@ -79,13 +79,14 @@ public class Ball extends MovableObject {
 
         if (other instanceof Paddle) {
 
-            // Giả sử paddle nằm ngang, ưu tiên phản xạ theo mặt va chạm
             if (y + height <= other.y + intersection.height) {
                 // Va mặt trên của paddle → dùng góc phản xạ
                 double ballCenterX = this.x + this.width / 2.0;
                 double paddleCenterX = other.x + other.width / 2.0;
-                double relativeIntersect = (ballCenterX - paddleCenterX) / (other.width / 2.0);
-                relativeIntersect = Math.max(-1.0, Math.min(1.0, relativeIntersect)); // Clamp
+                double relativeIntersect = (ballCenterX - paddleCenterX)
+                        / (other.width / 2.0);
+                relativeIntersect = Math.max(-1.0, Math.min(1.0,
+                        relativeIntersect));
 
                 double maxBounceAngle = Math.toRadians(75 );
                 double bounceAngle = relativeIntersect * maxBounceAngle;
@@ -94,7 +95,8 @@ public class Ball extends MovableObject {
                 directionY = -Math.cos(bounceAngle); // luôn đi lên
 
                 // Chuẩn hóa
-                double len = Math.sqrt(directionX * directionX + directionY * directionY);
+                double len = Math.sqrt(directionX * directionX
+                        + directionY * directionY);
                 directionX /= len;
                 directionY /= len;
                 if (Math.abs(directionX) < 0.1) {

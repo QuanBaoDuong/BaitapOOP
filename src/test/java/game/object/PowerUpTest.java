@@ -16,7 +16,7 @@ class PowerUpTest {
 
     @BeforeEach
     void setUp() {
-        gm = new GameManager(1, false, null); // null SoundManager vì không test âm thanh
+        gm = new GameManager(1, false, null);
         gm.setLives(3);
 
         paddle = new Paddle((game.java.main.GameJframe.SCREEN_WIDTH / 2) - 75,

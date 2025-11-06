@@ -43,7 +43,8 @@ public class SoundManager {
             else
                 backgroundClip.start();
 
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+        } catch (UnsupportedAudioFileException | IOException |
+                 LineUnavailableException e) {
             e.printStackTrace();
         }
     }
@@ -82,7 +83,8 @@ public class SoundManager {
                 }
             });
 
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+        } catch (UnsupportedAudioFileException | IOException |
+                 LineUnavailableException e) {
             e.printStackTrace();
         }
     }

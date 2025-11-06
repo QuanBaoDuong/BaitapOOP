@@ -16,7 +16,8 @@ public abstract class PowerUp extends GameObject {
     protected long duration; // thời gian hiệu lực (ms)
     protected long startTime;
 
-    public PowerUp(int x, int y, int width, int height, String type, long duration) {
+    public PowerUp(int x, int y, int width, int height, String type,
+                   long duration) {
         super(x, y, width, height);
         this.type = type;
         this.duration = duration;
@@ -47,7 +48,8 @@ public abstract class PowerUp extends GameObject {
     }
 
     public boolean isExpired() {
-        return active && duration > 0 && System.currentTimeMillis() - startTime > duration;
+        return active && duration > 0 && System.currentTimeMillis()
+                - startTime > duration;
     }
 
     public String getType() {

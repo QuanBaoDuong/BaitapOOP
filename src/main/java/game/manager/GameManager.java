@@ -72,7 +72,7 @@ public class GameManager {
         levelComplete = false;
     }
 
-    // ✅ hàm nextLevel – qua màn kế tiếp hoặc thắng game
+    //  hàm nextLevel – qua màn kế tiếp hoặc thắng game
     public void nextLevel() {
         currentLevel++;
         if (currentLevel > maxLevel) {
@@ -101,9 +101,6 @@ public class GameManager {
         balls.add(ballMain);
     }
 
-    // -------------------------------
-    // GAME UPDATE
-    // -------------------------------
     public void update() {
         if (outOfLives || levelComplete) return;
 
@@ -160,7 +157,8 @@ public class GameManager {
 
             for (Brick b : bricks) {
                 if (!b.isDestroyed() && ball.checkCollision(b)) {
-                    Rectangle inter = ball.getBounds().intersection(b.getBounds());
+                    Rectangle inter = ball.getBounds().intersection(
+                            b.getBounds());
                     int area = inter.width * inter.height;
                     if (area > maxArea) {
                         maxArea = area;
@@ -204,7 +202,8 @@ public class GameManager {
             }
 
             if (activated) {
-                if (soundManager != null) soundManager.playEffect("powerup.wav");
+                if (soundManager != null) soundManager.playEffect(
+                        "powerup.wav");
                 it.remove();
             }else if (p.getY() > GameJframe.SCREEN_HEIGHT) {
                 it.remove();
@@ -225,9 +224,7 @@ public class GameManager {
         }
     }
 
-    // -------------------------------
-    // GETTERS & SETTERS
-    // -------------------------------
+
     public List<Ball> getBalls() { return balls; }
     public Paddle getPaddle() { return paddle; }
     public List<Brick> getBricks() { return bricks; }
@@ -251,16 +248,21 @@ public class GameManager {
     public boolean isOutOfLives() { return outOfLives; }
     public boolean isLevelComplete() { return levelComplete; }
 
-    // -------------------------------
-    // INPUT
-    // -------------------------------
     public void handleKeyPressed(int keyCode) {
-        if (keyCode == java.awt.event.KeyEvent.VK_LEFT) paddle.setMoveLeft(true);
-        else if (keyCode == java.awt.event.KeyEvent.VK_RIGHT) paddle.setMoveRight(true);
+        if (keyCode == java.awt.event.KeyEvent.VK_LEFT) {
+            paddle.setMoveLeft(true);
+        }
+        else if (keyCode == java.awt.event.KeyEvent.VK_RIGHT) {
+            paddle.setMoveRight(true);
+        }
     }
 
     public void handleKeyReleased(int keyCode) {
-        if (keyCode == java.awt.event.KeyEvent.VK_LEFT) paddle.setMoveLeft(false);
-        else if (keyCode == java.awt.event.KeyEvent.VK_RIGHT) paddle.setMoveRight(false);
+        if (keyCode == java.awt.event.KeyEvent.VK_LEFT) {
+            paddle.setMoveLeft(false);
+        }
+        else if (keyCode == java.awt.event.KeyEvent.VK_RIGHT) {
+            paddle.setMoveRight(false);
+        }
     }
 }

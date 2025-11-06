@@ -12,7 +12,6 @@ class PaddleTest {
 
     @BeforeEach
     void setUp() {
-
         paddle = new Paddle((GameJframe.SCREEN_WIDTH / 2) - 75,
                 700, 150, 30);
     }

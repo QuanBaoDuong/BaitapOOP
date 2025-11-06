@@ -42,11 +42,13 @@ public class HighScoreState implements GameState, MouseListener {
 
         // Điểm cao
         g.setFont(TEXT_FONT);
-        g.drawString("Điểm cao nhất: " + HighScoreManager.getHighScore(), 340, 300);
+        g.drawString("Điểm cao nhất: " +
+                HighScoreManager.getHighScore(), 340, 300);
 
         // Nút quay lại
         g.setColor(isHovering ? BUTTON_HOVER : BUTTON_COLOR);
-        g.fillRoundRect(backButton.x, backButton.y, backButton.width, backButton.height, 15, 15);
+        g.fillRoundRect(backButton.x, backButton.y, backButton.width,
+                backButton.height, 15, 15);
         g.setColor(Color.WHITE);
         g.setFont(BUTTON_FONT);
         g.drawString("QUAY LẠI", backButton.x + 25, backButton.y + 28);

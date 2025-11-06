@@ -14,7 +14,8 @@ import java.util.List;
 
 public class Map {
     public static List<Brick> createMap(InputStream is, int brickWidth,
-                                        int brickHeight, int StartX, int StartY) {
+                                        int brickHeight, int StartX,
+                                        int StartY) {
 
         List<Brick>bricks = new ArrayList<>();
         int horizontalSpacing = 0;
@@ -35,13 +36,16 @@ public class Map {
                             // ô trống, không tạo gạch
                             break;
                         case 1:
-                            bricks.add(new NormalBrick(x, y, brickWidth, brickHeight));
+                            bricks.add(new NormalBrick(x, y,
+                                    brickWidth, brickHeight));
                             break;
                         case 2:
-                            bricks.add(new ToughBrick(x, y, brickWidth, brickHeight));
+                            bricks.add(new ToughBrick(x, y,
+                                    brickWidth, brickHeight));
                             break;
                         case 3:
-                            bricks.add(new UnbreakableBrick(x, y, brickWidth, brickHeight));
+                            bricks.add(new UnbreakableBrick(x, y,
+                                    brickWidth, brickHeight));
                             break;
                     }
                 }

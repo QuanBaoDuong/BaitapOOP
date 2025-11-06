@@ -43,7 +43,8 @@ public class GuideState implements GameState, MouseListener {
 
         g.setColor(Color.WHITE);
         g.setFont(BUTTON_FONT);
-        g.drawString("QUAY LẠI", backButtonBounds.x + 45, backButtonBounds.y + 35);
+        g.drawString("QUAY LẠI", backButtonBounds.x + 45,
+                backButtonBounds.y + 35);
     }
 
     @Override
