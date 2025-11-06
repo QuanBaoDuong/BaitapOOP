@@ -40,7 +40,7 @@ Mục tiêu là phá vỡ toàn bộ các khối gạch (bricks) ở phía trên
     
 - Có 5 map cho người chơi lựa chọn
 
-Đây là một số hình ảnh liên quan đến game
+Một số hình ảnh liên quan đến game:
 
 <img width="1244" height="980" alt="Screenshot 2025-11-05 225422" src="https://github.com/user-attachments/assets/da9d7e32-391e-4a80-910e-1ffd7c2d8896" />
 
