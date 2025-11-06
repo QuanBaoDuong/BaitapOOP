@@ -5,34 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2029db41-e102-4583-9589-5037f3133d39" name="Changes" comment="1">
-      <change afterPath="$PROJECT_DIR$/target/classes/game/object/MultiBallPowerUp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/highscore.dat" beforeDir="false" afterPath="$PROJECT_DIR$/highscore.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/manager/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/manager/GameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/object/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/object/Ball.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/object/PowerUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/object/PowerUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/render/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/render/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/state/PlayState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/state/PlayState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/state/SettingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/state/SettingState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/FileDesignMap/MapLv1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FileDesignMap/MapLv1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/FileDesignMap/MapLv2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FileDesignMap/MapLv2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/FileDesignMap/MapLv3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FileDesignMap/MapLv3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/FileDesignMap/MapLv4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FileDesignMap/MapLv4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/FileDesignMap/MapLv5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FileDesignMap/MapLv5.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/game/manager/GameManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/game/manager/GameManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FileDesignMap/MapLv1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FileDesignMap/MapLv1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FileDesignMap/MapLv2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FileDesignMap/MapLv2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FileDesignMap/MapLv3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FileDesignMap/MapLv3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FileDesignMap/MapLv4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FileDesignMap/MapLv4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FileDesignMap/MapLv5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FileDesignMap/MapLv5.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/manager/GameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/manager/GameManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/object/Ball.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/object/Ball.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/object/ExpandPaddlePowerUp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/object/ExpandPaddlePowerUp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/object/ExtraLifePowerUp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/object/ExtraLifePowerUp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/object/PowerUp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/object/PowerUp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/object/QuickBallPowerUp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/object/QuickBallPowerUp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/object/QuickPaddlePowerUp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/object/QuickPaddlePowerUp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/object/ShrinkPaddlePowerUp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/object/ShrinkPaddlePowerUp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/render/Renderer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/render/Renderer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/test/game/manager/GameManagerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/test/game/manager/GameManagerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/game/object/MultiBallPowerUp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/object/MultiBallPowerUp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/game/state/PlayState.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/state/PlayState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/game/state/SettingState.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/state/SettingState.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +67,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "D:/dsa/oop",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "MavenSettings"

@@ -263,6 +263,6 @@ class MultiBallPowerUp extends PowerUp {
         g2d.setColor(Color.MAGENTA);
         g2d.fillOval(x, y, width, height);
         g2d.setColor(Color.BLACK);
-        g2d.drawString("x2", x + 6, y + 14);
+        g2d.drawString("x3", x + 6, y + 14);
     }
 }
