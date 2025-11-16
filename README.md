@@ -52,4 +52,4 @@ Một số hình ảnh liên quan đến game:
 
 <img width="1250" height="983" alt="Screenshot 2025-11-05 225638" src="https://github.com/user-attachments/assets/9ddcc1c7-fa31-4816-85af-fa7f94841f0f" />
 
-
+https://drive.google.com/file/d/1d5Qt0Na18Xo3-uawuJiFm3_wakcCbFrv/view?usp=sharing
